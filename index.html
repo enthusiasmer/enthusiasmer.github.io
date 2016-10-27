@@ -241,6 +241,125 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/27/LeetCodeSolution08/" itemprop="url">
+                  String to Integer
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-27T12:43:16+08:00" content="2016-10-27">
+              2016-10-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>string是不能直接转化为int类型的,所以需要转化为int的对象类型Integer,然后Integer自动拆箱，转化为int.<br>STring str;<br>num=Integer.parseInt(str);</p>
+<h4 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h4><p>Implement atoi to convert a string to an integer.</p>
+<p>Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.</p>
+<p>Notes: It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front.</p>
+<h4 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h4><blockquote><p>package Algorithms;<br>public class Solution8 {<br>    public static int myAtoi(String str){<br>        double result=0;//一定要定义为double，不能定义为int<br>        int flag=1;<br>        int count=0;<br>        char[] ch=str.toCharArray();<br>        for(char c:ch)<br>        {<br>            count++;<br>            if(c&gt;=’0’&amp;&amp;c&lt;=’9’)<br>            {<br>                result<em>=10;<br>                result+=(c-‘0’);<br>            }else if(c==’+’&amp;&amp;count==1)<br>            {<br>                flag=1;<br>            }else if(c==’-‘&amp;&amp;count==1)<br>            {<br>                flag=-1;<br>            }else if(c==’ ‘&amp;&amp;count==1)<br>            {<br>                count–;<br>            }else<br>            {<br>                break;<br>            }<br>        }<br>        if(result&gt;Integer.MAX_VALUE)<br>        {<br>            if(flag==1)<br>            {<br>                return Integer.MAX_VALUE;<br>            }<br>            else<br>            {<br>                return Integer.MIN_VALUE;<br>            }<br>        }<br>        else<br>        {<br>            return (int)(flag</em>result);<br>        }<br>    }<br>    public static void main(String[] args) {<br>        String str=”2147483648”;<br>        System.out.println(myAtoi(str));<br>        System.out.println(Integer.MIN_VALUE);<br>    }<br>}</p>
+</blockquote>
+<h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><p> 首先如果第一个字符为‘+’、‘-’或者‘ ’，就继续向下判定，否则break；<br> 如果第一个字符是正负号，用flag记下该字符，然后依次将后面的字符转换为数字，<br> 最后进行数字是否越界，以及给result加上之前判定的flag符号。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/26/my-trip-to-YunNan/" itemprop="url">
                   云南昭通之旅
                 </a>
@@ -619,7 +738,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -627,7 +746,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
