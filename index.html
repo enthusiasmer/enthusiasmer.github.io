@@ -350,7 +350,8 @@ while (matcher.find()) {
 }
 matcher.appendTail(sbr);
 System.out.println(sbr.toString());
-</code></pre><p>◆验证是否为邮箱地址</p>
+</code></pre><font color="#FF0000">◆验证是否为邮箱地址</font>
+
 <pre><code>String str=&quot;ceponline@yahoo.com.cn&quot;;
 Pattern pattern = Pattern.compile(&quot;[//w//.//-]+@([//w//-]+//.)+[//w//-]+&quot;,Pattern.CASE_INSENSITIVE);
 Matcher matcher = pattern.matcher(str);
