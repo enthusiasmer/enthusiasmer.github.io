@@ -95,7 +95,7 @@
 思路：如果从中间随意取一个数值比较，那么向右、向下会有重叠的部分，导致下述寻找无法继续下去。
 为了解决这个问题需要考虑选择右上角的数为标准进行比较，因为该位置上的数在该行最大，在该列是最小的，故进行一次比较后，可以减少一列或者一行的">
 <meta property="og:image" content="http://yoursite.com/Img/dataStructure01.jpg">
-<meta property="og:updated_time" content="2016-10-31T04:17:36.998Z">
+<meta property="og:updated_time" content="2016-11-01T12:52:06.639Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二维数组中的查找">
 <meta name="twitter:description" content="题目：在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数，
@@ -309,9 +309,28 @@
         <h4 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h4><p>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数，</p>
 <h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><p>如果从中间随意取一个数值比较，那么向右、向下会有重叠的部分，导致下述寻找无法继续下去。</p>
 <p>为了解决这个问题需要考虑选择右上角的数为标准进行比较，因为该位置上的数在该行最大，在该列是最小的，故进行一次比较后，可以减少一列或者一行的查找范围，做到了代码优化的目的。<br><img src="/Img/dataStructure01.jpg" width="300" height="300" ;=""></p>
-<h4 id="Java代码如下："><a href="#Java代码如下：" class="headerlink" title="Java代码如下："></a>Java代码如下：</h4><blockquote><p>public static boolean Search(int[][] arr, int rows, int columns, int number){<br>    boolean found=false;<br>    if(arr!=null&amp;&amp;rows&gt;0&amp;&amp;columns&gt;0)<br>    {<br>        int row=0;<br>        int col=columns-1;<br>        while(row<rows&&col>=0)<br>        {<br>            if(arr[row][col]==number)<br>            {<br>                found=true;<br>                break;<br>            }else if(arr[row][col]&gt;number){<br>                –col;<br>            }else{<br>                ++row;<br>            }<br>        }<br>    }<br>    return found;<br>}</rows&&col></p>
-</blockquote>
-
+<h4 id="Java代码如下："><a href="#Java代码如下：" class="headerlink" title="Java代码如下："></a>Java代码如下：</h4><pre><code>public static boolean Search(int[][] arr, int rows, int columns, int number){
+    boolean found=false;
+    if(arr!=null&amp;&amp;rows&gt;0&amp;&amp;columns&gt;0)
+    {
+        int row=0;
+        int col=columns-1;
+        while(row&lt;rows&amp;&amp;col&gt;=0)
+        {
+            if(arr[row][col]==number)
+            {
+                found=true;
+                break;
+            }else if(arr[row][col]&gt;number){
+                --col;
+            }else{
+                ++row;
+            }
+        }
+    }
+    return found;
+}
+</code></pre>
       
     </div>
 
@@ -343,6 +362,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/01/regular-expressions-for-java/" rel="prev" title="Java正则表达式————入门(转)">
+                Java正则表达式————入门(转) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -410,7 +433,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
