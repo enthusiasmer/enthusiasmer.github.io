@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/11/01/regular-expressions-for-java/index.html">
 <meta property="og:site_name" content="Walnut code">
 <meta property="og:description" content="众所周知，在程序开发中，难免会遇到需要匹配、查找、替换、判断字符串的情况发生，而这些情况有时又比较复杂，如果用纯编码方式解决，往往会浪费程序员的时间及精力。因此，学习及使用正则表达式，便成了解决这一矛盾的主要手段。大 家都知道，正则表达式是一种可以用于模式匹配和替换的规范，一个正则表达式就是由普通的字符（例如字符a到z）以及特殊字符（元字符）组成的文字模式，它 用以描述在查找文字主体时待匹配的一个">
-<meta property="og:updated_time" content="2016-11-01T14:18:57.549Z">
+<meta property="og:updated_time" content="2016-11-02T10:10:08.743Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java正则表达式————入门(转)">
 <meta name="twitter:description" content="众所周知，在程序开发中，难免会遇到需要匹配、查找、替换、判断字符串的情况发生，而这些情况有时又比较复杂，如果用纯编码方式解决，往往会浪费程序员的时间及精力。因此，学习及使用正则表达式，便成了解决这一矛盾的主要手段。大 家都知道，正则表达式是一种可以用于模式匹配和替换的规范，一个正则表达式就是由普通的字符（例如字符a到z）以及特殊字符（元字符）组成的文字模式，它 用以描述在查找文字主体时待匹配的一个">
@@ -317,7 +317,7 @@
       
         <p>众所周知，在程序开发中，难免会遇到需要匹配、查找、替换、判断字符串的情况发生，而这些情况有时又比较复杂，如果用纯编码方式解决，往往会浪费程序员的时间及精力。因此，学习及使用正则表达式，便成了解决这一矛盾的主要手段。<br>大 家都知道，正则表达式是一种可以用于模式匹配和替换的规范，一个正则表达式就是由普通的字符（例如字符a到z）以及特殊字符（元字符）组成的文字模式，它 用以描述在查找文字主体时待匹配的一个或多个字符串。正则表达式作为一个模板，将某个字符模式与所搜索的字符串进行匹配。<br>自从jdk1.4推出java.util.regex包，就为我们提供了很好的JAVA正则表达式应用平台。</p>
 <p>因为正则表达式是一个很庞杂的体系，所以我仅例举些入门的概念，更多的请参阅相关书籍及自行摸索。 </p>
-<p>// 反斜杠<br>/t 间隔 (‘/u0009’)<br>/n 换行 (‘/u000A’)<br>/r 回车 (‘/u000D’)<br>/d 数字 等价于[0-9]<br>/D 非数字 等价于[^0-9]<br>/s 空白符号 [/t/n/x0B/f/r]<br>/S 非空白符号 [^/t/n/x0B/f/r]<br>/w 单独字符 [a-zA-Z_0-9]<br>/W 非单独字符 [^a-zA-Z_0-9]<br>/f 换页符<br>/e Escape<br>/b 一个单词的边界<br>/B 一个非单词的边界<br>/G 前一个匹配的结束</p>
+<p>\ 反斜杠<br>\t 间隔 (‘/u0009’)<br>\n 换行 (‘/u000A’)<br>\r 回车 (‘/u000D’)<br>\d 数字 等价于[0-9]<br>\D 非数字 等价于[^0-9]<br>\s 空白符号 [/t/n/x0B/f/r]<br>\S 非空白符号 [^/t/n/x0B/f/r]<br>\w 单独字符 [a-zA-Z_0-9]<br>\W 非单独字符 [^a-zA-Z_0-9]<br>\f 换页符<br>\e Escape<br>\b 一个单词的边界<br>\B 一个非单词的边界<br>\G 前一个匹配的结束</p>
 <p>^为限制开头<br>^java     条件限制为以Java为开头字符<br>$为限制结尾<br>java$     条件限制为以java为结尾字符<br>.  条件限制除/n以外任意一个单独字符<br>java..     条件限制为java后除换行外任意两个字符</p>
 <p>加入特定限制条件「[]」<br>[a-z]     条件限制在小写a to z范围中一个字符<br>[A-Z]     条件限制在大写A to Z范围中一个字符<br>[a-zA-Z] 条件限制在小写a to z或大写A to Z范围中一个字符<br>[0-9]     条件限制在小写0 to 9范围中一个字符<br>[0-9a-z] 条件限制在小写0 to 9或a to z范围中一个字符<br>[0-9[a-z]] 条件限制在小写0 to 9或a to z范围中一个字符(交集)</p>
 <p>[]中加入^后加再次限制条件「[^]」<br>[^a-z]     条件限制在非小写a to z范围中一个字符<br>[^A-Z]     条件限制在非大写A to Z范围中一个字符<br>[^a-zA-Z] 条件限制在非小写a to z或大写A to Z范围中一个字符<br>[^0-9]     条件限制在非小写0 to 9范围中一个字符<br>[^0-9a-z] 条件限制在非小写0 to 9或a to z范围中一个字符<br>[^0-9[a-z]] 条件限制在非小写0 to 9或a to z范围中一个字符(交集)</p>
@@ -361,7 +361,7 @@ while (matcher.find()) {
 }
 matcher.appendTail(sbr);
 System.out.println(sbr.toString());
-</code></pre><font color="#FF0000">◆验证是否为邮箱地址</font>
+</code></pre><font color="#FF0000">◆验证是否为邮箱地址</font><br><font color="#FF0000">\w+@([0-9a-zA-Z]+[-0-9a-zA-Z]<em>)(.[0-9a-zA-Z]+[-0-9a-zA-Z]</em>)+</font>
 
 <pre><code>String str=&quot;ceponline@yahoo.com.cn&quot;;
 Pattern pattern = Pattern.compile(&quot;[//w//.//-]+@([//w//-]+//.)+[//w//-]+&quot;,Pattern.CASE_INSENSITIVE);
