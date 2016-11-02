@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/11/01/regular-expressions-for-java/index.html">
 <meta property="og:site_name" content="Walnut code">
 <meta property="og:description" content="众所周知，在程序开发中，难免会遇到需要匹配、查找、替换、判断字符串的情况发生，而这些情况有时又比较复杂，如果用纯编码方式解决，往往会浪费程序员的时间及精力。因此，学习及使用正则表达式，便成了解决这一矛盾的主要手段。大 家都知道，正则表达式是一种可以用于模式匹配和替换的规范，一个正则表达式就是由普通的字符（例如字符a到z）以及特殊字符（元字符）组成的文字模式，它 用以描述在查找文字主体时待匹配的一个">
-<meta property="og:updated_time" content="2016-11-02T10:10:08.743Z">
+<meta property="og:updated_time" content="2016-11-02T10:16:04.632Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java正则表达式————入门(转)">
 <meta name="twitter:description" content="众所周知，在程序开发中，难免会遇到需要匹配、查找、替换、判断字符串的情况发生，而这些情况有时又比较复杂，如果用纯编码方式解决，往往会浪费程序员的时间及精力。因此，学习及使用正则表达式，便成了解决这一矛盾的主要手段。大 家都知道，正则表达式是一种可以用于模式匹配和替换的规范，一个正则表达式就是由普通的字符（例如字符a到z）以及特殊字符（元字符）组成的文字模式，它 用以描述在查找文字主体时待匹配的一个">
@@ -361,7 +361,7 @@ while (matcher.find()) {
 }
 matcher.appendTail(sbr);
 System.out.println(sbr.toString());
-</code></pre><font color="#FF0000">◆验证是否为邮箱地址</font><br><font color="#FF0000">\w+@([0-9a-zA-Z]+[-0-9a-zA-Z]<em>)(.[0-9a-zA-Z]+[-0-9a-zA-Z]</em>)+</font>
+</code></pre><font color="#FF0000">◆验证是否为邮箱地址</font><br><font color="#FF0000">\w+@([0-9a-zA-Z]+[-0-9a-zA-Z]<em>)(\.[0-9a-zA-Z]+[-0-9a-zA-Z]*</em>)+</font>
 
 <pre><code>String str=&quot;ceponline@yahoo.com.cn&quot;;
 Pattern pattern = Pattern.compile(&quot;[//w//.//-]+@([//w//-]+//.)+[//w//-]+&quot;,Pattern.CASE_INSENSITIVE);
@@ -472,7 +472,7 @@ public static void output(String path,String regexp) {
 public static void main (String[] args) {
     output(&quot;C://&quot;,&quot;[A-z|.]*&quot;);
 }
-</code></pre><p>Java正则的功用还有很多，事实上只要是字符处理，就没有正则做不到的事情存在。（当然，正则解释时较耗时间就是了|||……）</p>
+</code></pre><p>Java正则的功用还有很多，事实上只要是字符处理，就没有正则做不到的事情存在。（当然，正则解释时较耗时间就是了|||……）<br>Ps:此文中有很多地方“\”写成了“/”，未及时更正，请见谅。</p>
 
       
     </div>

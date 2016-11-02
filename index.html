@@ -367,7 +367,7 @@ while (matcher.find()) {
 }
 matcher.appendTail(sbr);
 System.out.println(sbr.toString());
-</code></pre><font color="#FF0000">◆验证是否为邮箱地址</font><br><font color="#FF0000">\w+@([0-9a-zA-Z]+[-0-9a-zA-Z]<em>)(.[0-9a-zA-Z]+[-0-9a-zA-Z]</em>)+</font>
+</code></pre><font color="#FF0000">◆验证是否为邮箱地址</font><br><font color="#FF0000">\w+@([0-9a-zA-Z]+[-0-9a-zA-Z]<em>)(\.[0-9a-zA-Z]+[-0-9a-zA-Z]*</em>)+</font>
 
 <pre><code>String str=&quot;ceponline@yahoo.com.cn&quot;;
 Pattern pattern = Pattern.compile(&quot;[//w//.//-]+@([//w//-]+//.)+[//w//-]+&quot;,Pattern.CASE_INSENSITIVE);
@@ -478,7 +478,7 @@ public static void output(String path,String regexp) {
 public static void main (String[] args) {
     output(&quot;C://&quot;,&quot;[A-z|.]*&quot;);
 }
-</code></pre><p>Java正则的功用还有很多，事实上只要是字符处理，就没有正则做不到的事情存在。（当然，正则解释时较耗时间就是了|||……）</p>
+</code></pre><p>Java正则的功用还有很多，事实上只要是字符处理，就没有正则做不到的事情存在。（当然，正则解释时较耗时间就是了|||……）<br>Ps:此文中有很多地方“\”写成了“/”，未及时更正，请见谅。</p>
 
           
         
