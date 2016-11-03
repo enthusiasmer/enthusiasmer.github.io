@@ -252,7 +252,7 @@
               
                 
                 <a class="post-title-link" href="/2016/11/03/getSum/" itemprop="url">
-                  不用+和-实现加减运算
+                  未命名
                 </a>
               
             
@@ -270,25 +270,6 @@
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
@@ -321,51 +302,7 @@
       
         
           
-            <h4 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h4><p>Calculate the sum of two integers a and b, but you are not allowed to use the operator + and -.<br>即：在不使用“+”和“-”的情况下，对两个数进行加减。</p>
-<p>Example：<br>Given a=1 and b=2,return 3;</p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>在不使用“+”和“-”的情况下，对两个数进行加减。可以使用位操作（bit manipulation）。<br>加法：<br>用位操作进行加法运算，主要思想是将加法的计算结果分解为两部分：第一是不考虑进位的运算结果，第二是进位，然后再将这两者相加，即得到结果。详细表述如下：<br>（1）不考虑进位的计算结果，以一位二进制数来表示：<br>1+1=0<br>1+0=1<br>0+1=1<br>0+0=0<br>这个过程可以用异或位运算符来表示，即：<br>1^1=0<br>1^0=1<br>0^1=1<br>0^0=0<br>则a^b表示不考虑进位的计算结果。<br>（2）进位，同样以一位二进制数表示：<br>0+0→不进位<br>0+1→不进位<br>1+0→不进位<br>1+1→进位，即相当于是10，将10加到不考虑进位的计算结果上，即可得到整个的计算结果，而可以用位运算的与操作和向左的移位操作即可模拟上述的是否进位：<br>0&amp;0=0       (0&amp;0)&lt;&lt;1=0<br>0&amp;1=0       (0&amp;1)&lt;&lt;1=0<br>1&amp;0=0       (1&amp;0)&lt;&lt;1=0<br>1&amp;1=1       (1&amp;1)&lt;&lt;1=10<br>如此，即将运算结果计算出来了。<br>减法：<br>在进行与运算时将a取反就行了，其他相同。</p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>package Algorithms;
-public class Solution371 {
-    //加法
-    public static int getSum1(int a, int b) {
-        if(a==0) return b;
-        if(b==0) return a;
-        while(b!=0)
-        {
-            int temp=a&amp;b;
-            a=a^b;
-            b=temp&lt;&lt;1;
-        }
-        return a;
-    }
-    public int getSubtract1(int a, int b) {
-        while (b != 0) {
-            int borrow = (~a) &amp; b;
-            a = a ^ b;
-            b = borrow &lt;&lt; 1;
-        }
-
-        return a;
-    }
-    // Recursive
-    public int getSum2(int a, int b) {
-        return (b == 0) ? a : getSum2(a ^ b, (a &amp; b) &lt;&lt; 1);
-    }
-
-    // Recursive
-    public int getSubtract2(int a, int b) {
-        return (b == 0) ? a : getSubtract2(a ^ b, (~a &amp; b) &lt;&lt; 1);
-    }
-
-    // Get negative number
-    public int negate(int x) {
-        return ~x + 1;
-    }
-    public static void main(String[] args) {
-        System.out.println(getSum1(1,3));
-    }
-}
-</code></pre>
+            
           
         
       
