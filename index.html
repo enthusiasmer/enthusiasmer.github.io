@@ -251,6 +251,155 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/10/linkedList01/" itemprop="url">
+                  单链表的结点删除
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-10T19:40:10+08:00" content="2016-11-10">
+              2016-11-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/数据结构——链表/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构——链表</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/10/linkedList01/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/10/linkedList01/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>从最基本的写起，今天写的是单链表的某个结点的删除；<br>节点的删除分为两种情况，分别是该节点不为尾结点，第二种是该节点为任意结点（有可能为尾结点）。</p>
+<h4 id="链表结点类的定义"><a href="#链表结点类的定义" class="headerlink" title="链表结点类的定义"></a>链表结点类的定义</h4><pre><code>Definition for singly-linked list.
+public class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) { val = x; }
+}
+</code></pre><h4 id="非尾结点的删除"><a href="#非尾结点的删除" class="headerlink" title="非尾结点的删除"></a>非尾结点的删除</h4><pre><code>//删除非最后一个结点
+    public static void deleteNode1(ListNode p){
+        if(p==null||p.next==null) return;
+        ListNode pNext=p.next;
+        p.val=pNext.val;
+        p.next=pNext.next;
+    }
+</code></pre><h4 id="删除任意一个结点"><a href="#删除任意一个结点" class="headerlink" title="删除任意一个结点"></a>删除任意一个结点</h4><pre><code>//删除单链表中的任意一个结点,其中L为整个链表
+    public static void deleteNode2(ListNode L,ListNode p){
+        if(p==null) return;
+        if(p.next!=null){
+            ListNode pNext=p.next;
+            p.val=pNext.val;
+            p.next=pNext.next;
+        }else{
+            ListNode pre=L;
+            while(pre.next!=null){
+                if(pre.next==p){
+                    pre.next=p.next;
+                }
+            }
+        }
+    }
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/06/github-display-problem/" itemprop="url">
                   博客首页、归档等文字显示不出来问题
                 </a>
@@ -1700,7 +1849,7 @@ public class Solution8 {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1708,7 +1857,7 @@ public class Solution8 {
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
