@@ -84,19 +84,30 @@
 
 
 
-<meta name="description" content="虽然Title是Java And C++，但是本文可能会偏向Java。因为小时候对手机上出现的一个coffee杯，然后上面出现热气的印象很深刻，当时就感觉很酷的样子，后来才知道那就Java的标志，所以博主可能行文中间会偏向Java。
-先来安利一下Java的advantage1.Java为纯面向对象语言，它能够反映一切生活中的对象，编写程序更为容易；2.平台无关性，”一次编译，到处运行”，程序源代码">
+<meta name="description" content="思路分析将单链表进行反转，博主用了两种方法来解决此问题；1.利用递归，进行递归反转，即从链表尾部一次转换结点指向；2.利用遍历进行反转，从链表头进行反转，反转前需要把当前结点的next指针进行保存。
+实现代码package Algorithms;
+public class Solution206 {
+    //方法一：递归反转法
+    public static ListNode revers">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java And C++">
-<meta property="og:url" content="http://yoursite.com/2016/10/25/my-new-post/index.html">
+<meta property="og:title" content="单链表的反转">
+<meta property="og:url" content="http://yoursite.com/2016/11/11/linkedList02/index.html">
 <meta property="og:site_name" content="Walnut code">
-<meta property="og:description" content="虽然Title是Java And C++，但是本文可能会偏向Java。因为小时候对手机上出现的一个coffee杯，然后上面出现热气的印象很深刻，当时就感觉很酷的样子，后来才知道那就Java的标志，所以博主可能行文中间会偏向Java。
-先来安利一下Java的advantage1.Java为纯面向对象语言，它能够反映一切生活中的对象，编写程序更为容易；2.平台无关性，”一次编译，到处运行”，程序源代码">
-<meta property="og:updated_time" content="2016-10-25T13:55:08.765Z">
+<meta property="og:description" content="思路分析将单链表进行反转，博主用了两种方法来解决此问题；1.利用递归，进行递归反转，即从链表尾部一次转换结点指向；2.利用遍历进行反转，从链表头进行反转，反转前需要把当前结点的next指针进行保存。
+实现代码package Algorithms;
+public class Solution206 {
+    //方法一：递归反转法
+    public static ListNode revers">
+<meta property="og:image" content="http://yoursite.com/Img/linkedList.png">
+<meta property="og:updated_time" content="2016-11-11T09:57:31.677Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java And C++">
-<meta name="twitter:description" content="虽然Title是Java And C++，但是本文可能会偏向Java。因为小时候对手机上出现的一个coffee杯，然后上面出现热气的印象很深刻，当时就感觉很酷的样子，后来才知道那就Java的标志，所以博主可能行文中间会偏向Java。
-先来安利一下Java的advantage1.Java为纯面向对象语言，它能够反映一切生活中的对象，编写程序更为容易；2.平台无关性，”一次编译，到处运行”，程序源代码">
+<meta name="twitter:title" content="单链表的反转">
+<meta name="twitter:description" content="思路分析将单链表进行反转，博主用了两种方法来解决此问题；1.利用递归，进行递归反转，即从链表尾部一次转换结点指向；2.利用遍历进行反转，从链表头进行反转，反转前需要把当前结点的next指针进行保存。
+实现代码package Algorithms;
+public class Solution206 {
+    //方法一：递归反转法
+    public static ListNode revers">
+<meta name="twitter:image" content="http://yoursite.com/Img/linkedList.png">
 
 
 
@@ -117,10 +128,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/10/25/my-new-post/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/11/linkedList02/"/>
 
 
-  <title> Java And C++ | Walnut code </title>
+  <title> 单链表的反转 | Walnut code </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +263,7 @@
             
             
               
-                Java And C++
+                单链表的反转
               
             
           </h1>
@@ -264,8 +275,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-25T20:48:12+08:00" content="2016-10-25">
-              2016-10-25
+            <time itemprop="dateCreated" datetime="2016-11-11T17:43:04+08:00" content="2016-11-11">
+              2016-11-11
             </time>
           </span>
 
@@ -278,8 +289,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/数据结构——链表/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构——链表</span>
                   </a>
                 </span>
 
@@ -294,8 +305,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/25/my-new-post/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/25/my-new-post/" itemprop="commentsCount"></span>
+                <a href="/2016/11/11/linkedList02/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/11/linkedList02/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -318,10 +329,56 @@
       
 
       
-        <p>虽然Title是Java And C++，但是本文可能会偏向Java。因为小时候对手机上出现的一个coffee杯，然后上面出现热气的印象很深刻，当时就感觉很酷的样子，后来才知道那就Java的标志，所以博主可能行文中间会偏向Java。</p>
-<h3 id="先来安利一下Java的advantage"><a href="#先来安利一下Java的advantage" class="headerlink" title="先来安利一下Java的advantage"></a>先来安利一下Java的advantage</h3><p>1.Java为纯面向对象语言，它能够反映一切生活中的对象，编写程序更为容易；<br>2.平台无关性，”一次编译，到处运行”，程序源代码编译成字节码，然后在java虚拟机上执行；<br>3.Java提供了很多内置的类库，简化开发人员的程序设计工作，比如Java语言提供了对多线程的支持，提供了对网络通信的支持，以及垃圾回收器（Garbage Collection）；<br>4.java提供了对web应用开发的支持，applet、servlet和jsp用来开发web应用程序，socket，RMI用来开发分布式应用程序；<br>5.java具有较好的安全性和健壮性，防止恶意代码攻击的安全机制（数组边界检测和Bytecode校验等）；<br>6.去除了C++语言中难以理解、容易混淆的特性，比如头文件、指针、结构、单元、运算符重载、虚拟基础类、异常处理机制、多重继承等；</p>
-<h3 id="Comparison-between-Java-and-C"><a href="#Comparison-between-Java-and-C" class="headerlink" title="Comparison between Java and C++:"></a>Comparison between Java and C++:</h3><p>1.Java为纯面向对象语言，所有代码（报错变量、函数等）必须在类中实现，除基本数据类型（包括int、float等）外，所有类型都是类。此外，Java语言中不存在全局变量或者全局函数，而C++兼具面向过程和面向过程编程的特点，可以定义全局变量和全局函数；<br>2.与C++相比，Java没有指针的概念，这有效防止了C/C++语言中操作指针可能引起的系统问题，从而使程序变得更加安全；<br>3.与C++相比，Java语言不支持多重继承，但是Java引入了接口的概念，可以同时实现多个接口。由于接口也具有多态性，因此java语言中可以通过实现多个接口来实现与C++语言中多重继承类似的目的；<br>4.在C++语言中，需要开发人员去管理内存的分配（包括申请与释放），而Java语言提供了垃圾回收器来实现垃圾的自动回收，不需要程序显式地管理内存的分配。在C++语言中，通常会把释放资源的代码放到析构函数中，Java语言中虽然没有析构函数，但却引入了一个finalize()方法，当垃圾回收器将要释放无用对象的内存时，会首先调用该对象的finalize()方法，因此，开发人员不需要关心也不需要知道对象所占的内存空间何时会被释放；<br>5.C++语言支持运算符重载，而Java语言不支持运算符重载。C++语言支持预处理，Java语言没有预处理器，但它提供的import机制与C++中的预处理机制类似；<br>6.Java具有平台无关性，Java提供对注释文档的内建支持。</p>
-<p>其实呢，博主觉得Java最大的优势就是跨平台，也就是所谓的“一次编译，到处运行”。<br>ps：一定记得要加空格！一定记得要加空格！一定记得要加空格！（重要的事情说三遍）</p>
+        <h4 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h4><p>将单链表进行反转，博主用了两种方法来解决此问题；<br>1.利用递归，进行递归反转，即从链表尾部一次转换结点指向；<br>2.利用遍历进行反转，从链表头进行反转，反转前需要把当前结点的next指针进行保存。</p>
+<h4 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h4><pre><code>package Algorithms;
+public class Solution206 {
+    //方法一：递归反转法
+    public static ListNode reverseList1(ListNode head){
+        if(head==null||head.next==null) return head;//如何为空链表或者head为尾结点，直接返回
+        ListNode start=reverseList1(head.next);
+        head.next.next=head;
+        head.next=null;
+        return start;
+    }
+    //方法二：遍历反转法
+    public static ListNode reverseList2(ListNode head){
+        if(head==null||head.next==null) return head;
+        ListNode pre=head;//定义为当前结点的前结点
+        ListNode cur=head.next;//定义cur为当前结点
+        ListNode temp=null;//临时结点用来放置当前结点的next
+        while(cur!=null){
+            temp=cur.next;
+            cur.next=pre;
+            pre=cur;
+            cur=temp;
+        }
+        head.next=null;
+        return pre;
+    }
+    public static void main(String[] args) {
+        ListNode lis1=new ListNode(1);
+        ListNode lis2=new ListNode(2);
+        ListNode lis3=new ListNode(3);
+        ListNode lis4=new ListNode(4);
+        lis1.next=lis2;
+        lis2.next=lis3;
+        lis3.next=lis4;
+        //反转前，打印链表
+        ListNode h=lis1;
+        while(h!=null){
+            System.out.print(h.val+&quot; &quot;);
+            h=h.next;
+        }
+        //反转后，打印链表
+        System.out.println(&quot;\n======================&quot;);
+        ListNode eh=reverseList2(lis1);
+        while(eh!=null){
+            System.out.print(eh.val+&quot; &quot;);
+            eh=eh.next;
+        }
+    }
+}
+</code></pre><h4 id="编译结果图"><a href="#编译结果图" class="headerlink" title="编译结果图"></a>编译结果图</h4><p><img src="/Img/linkedList.png" width="300" height="300" ;=""></p>
 
       
     </div>
@@ -347,17 +404,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/24/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2016/11/10/linkedList01/" rel="next" title="单链表的结点删除">
+                <i class="fa fa-chevron-left"></i> 单链表的结点删除
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/26/my-trip-to-YunNan/" rel="prev" title="云南昭通之旅">
-                云南昭通之旅 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -383,8 +436,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/25/my-new-post/"
-           data-title="Java And C++" data-url="http://yoursite.com/2016/10/25/my-new-post/">
+      <div class="ds-thread" data-thread-key="2016/11/11/linkedList02/"
+           data-title="单链表的反转" data-url="http://yoursite.com/2016/11/11/linkedList02/">
       </div>
     
   </div>
@@ -479,7 +532,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#先来安利一下Java的advantage"><span class="nav-number">1.</span> <span class="nav-text">先来安利一下Java的advantage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Comparison-between-Java-and-C"><span class="nav-number">2.</span> <span class="nav-text">Comparison between Java and C++:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路分析"><span class="nav-number">1.</span> <span class="nav-text">思路分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现代码"><span class="nav-number">2.</span> <span class="nav-text">实现代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编译结果图"><span class="nav-number">3.</span> <span class="nav-text">编译结果图</span></a></li></ol></div>
             
           </div>
         </section>
