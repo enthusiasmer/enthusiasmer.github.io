@@ -84,22 +84,21 @@
 
 
 
-<meta name="description" content="string是不能直接转化为int类型的,所以需要转化为int的对象类型Integer,然后Integer自动拆箱，转化为int.STring str;num=Integer.parseInt(str);
-题目：Implement atoi to convert a string to an integer.
-Hint: Carefully consider all possible input">
+<meta name="description" content="ProblemGiven a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.
+According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined be">
 <meta property="og:type" content="article">
-<meta property="og:title" content="String to Integer">
-<meta property="og:url" content="http://yoursite.com/2016/10/27/LeetCodeSolution08/index.html">
+<meta property="og:title" content="Lowest common ancestor（最近公共祖先）">
+<meta property="og:url" content="http://yoursite.com/2016/11/17/Solution235/index.html">
 <meta property="og:site_name" content="Walnut code">
-<meta property="og:description" content="string是不能直接转化为int类型的,所以需要转化为int的对象类型Integer,然后Integer自动拆箱，转化为int.STring str;num=Integer.parseInt(str);
-题目：Implement atoi to convert a string to an integer.
-Hint: Carefully consider all possible input">
-<meta property="og:updated_time" content="2016-11-01T12:53:23.061Z">
+<meta property="og:description" content="ProblemGiven a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.
+According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined be">
+<meta property="og:image" content="http://yoursite.com/Img/Solution235.png">
+<meta property="og:updated_time" content="2016-11-17T08:17:51.999Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="String to Integer">
-<meta name="twitter:description" content="string是不能直接转化为int类型的,所以需要转化为int的对象类型Integer,然后Integer自动拆箱，转化为int.STring str;num=Integer.parseInt(str);
-题目：Implement atoi to convert a string to an integer.
-Hint: Carefully consider all possible input">
+<meta name="twitter:title" content="Lowest common ancestor（最近公共祖先）">
+<meta name="twitter:description" content="ProblemGiven a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.
+According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined be">
+<meta name="twitter:image" content="http://yoursite.com/Img/Solution235.png">
 
 
 
@@ -120,10 +119,10 @@ Hint: Carefully consider all possible input">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/10/27/LeetCodeSolution08/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/17/Solution235/"/>
 
 
-  <title> String to Integer | Walnut code </title>
+  <title> Lowest common ancestor（最近公共祖先） | Walnut code </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -255,7 +254,7 @@ Hint: Carefully consider all possible input">
             
             
               
-                String to Integer
+                Lowest common ancestor（最近公共祖先）
               
             
           </h1>
@@ -267,8 +266,8 @@ Hint: Carefully consider all possible input">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-27T12:43:16+08:00" content="2016-10-27">
-              2016-10-27
+            <time itemprop="dateCreated" datetime="2016-11-17T16:08:24+08:00" content="2016-11-17">
+              2016-11-17
             </time>
           </span>
 
@@ -297,8 +296,8 @@ Hint: Carefully consider all possible input">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/27/LeetCodeSolution08/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/27/LeetCodeSolution08/" itemprop="commentsCount"></span>
+                <a href="/2016/11/17/Solution235/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/17/Solution235/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -321,59 +320,39 @@ Hint: Carefully consider all possible input">
       
 
       
-        <p>string是不能直接转化为int类型的,所以需要转化为int的对象类型Integer,然后Integer自动拆箱，转化为int.<br>STring str;<br>num=Integer.parseInt(str);</p>
-<h4 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h4><p>Implement atoi to convert a string to an integer.</p>
-<p>Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.</p>
-<p>Notes: It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front.</p>
-<h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><p>首先如果第一个字符为‘+’、‘-’或者‘ ’，就继续向下判定，否则break；<br>如果第一个字符是正负号，用flag记下该字符，然后依次将后面的字符转换为数字，<br>最后进行数字是否越界，以及给result加上之前判定的flag符号。</p>
-<h4 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h4><pre><code>package Algorithms;
-public class Solution8 {
-    public static int myAtoi(String str){
-        double result=0;//一定要定义为double，不能定义为int
-        int flag=1;
-        int count=0;
-        char[] ch=str.toCharArray();
-        for(char c:ch)
-        {
-            count++;
-            if(c&gt;=&apos;0&apos;&amp;&amp;c&lt;=&apos;9&apos;)
-            {
-                result*=10;
-                result+=(c-&apos;0&apos;);
-            }else if(c==&apos;+&apos;&amp;&amp;count==1)
-            {
-                flag=1;
-            }else if(c==&apos;-&apos;&amp;&amp;count==1)
-            {
-                flag=-1;
-            }else if(c==&apos; &apos;&amp;&amp;count==1)
-            {
-                count--;
-            }else
-            {
-                break;
-            }
-        }
-        if(result&gt;Integer.MAX_VALUE)
-        {
-            if(flag==1) 
-            {
-                return Integer.MAX_VALUE;
-            }
-            else
-            {
-                return Integer.MIN_VALUE;
-            }
-        }
-        else
-        {
-            return (int)(flag*result);
-        }
+        <h4 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h4><p>Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.</p>
+<p>According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes v and w as the lowest node in T that has both v and w as descendants (where we allow a node to be a descendant of itself).<br><img src="/Img/Solution235.png" width="500" height="500" ;=""><br>For example, the lowest common ancestor (LCA) of nodes 2 and 8 is 6. Another example is LCA of nodes 2 and 4 is 2, since a node can be a descendant of itself according to the LCA definition.</p>
+<h4 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h4><p>对于二叉搜索树：二叉查找树（Binary Search Tree），（又：二叉搜索树，二叉排序树）它或者是一棵空树，或者是具有下列性质的二叉树： 若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值； 若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值； 它的左、右子树也分别为二叉排序树。</p>
+<p>主要分别三种：<br>1.如果子节点p和q分别位于root的左右两边，则root为Lowest common ancestor；<br>2.如果子节点p和q都位于root的左边，将root.left作为此时的根节点root，进行递归；<br>3.如果子节点p和q都位于root的右边，将root.left作为此时的根节点root，进行递归。</p>
+<p>如果是二叉搜索数可以直接判断，子节点p和q在左子树或右子树；如果是普通的二叉树，则可以用如下函数来判断。</p>
+<pre><code>public static boolean isChildNode(TreeNode root,TreeNode child){
+        if(root==null) return false;
+        if(root==child) return true;
+        return isChildNode(root.left,child)||isChildNode(root.right,child);
     }
-    public static void main(String[] args) {
-        String str=&quot;2147483648&quot;;
-        System.out.println(myAtoi(str));
-        System.out.println(Integer.MIN_VALUE);
+</code></pre><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><pre><code>/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(isChildNode(root.left,p)&amp;&amp;isChildNode(root.left,q)){
+            return lowestCommonAncestor(root.left,p,q);
+        }
+        if(isChildNode(root.right,p)&amp;&amp;isChildNode(root.right,q)){
+            return lowestCommonAncestor(root.right,p,q);
+        }
+        return root;
+    }
+    public static boolean isChildNode(TreeNode root,TreeNode child){
+        if(root==null) return false;
+        if(root==child) return true;
+        return isChildNode(root.left,child)||isChildNode(root.right,child);
     }
 }
 </code></pre>
@@ -401,17 +380,13 @@ public class Solution8 {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/26/my-trip-to-YunNan/" rel="next" title="云南昭通之旅">
-                <i class="fa fa-chevron-left"></i> 云南昭通之旅
+              <a href="/2016/11/16/Solution437/" rel="next" title="Path Sum">
+                <i class="fa fa-chevron-left"></i> Path Sum
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/31/data-structure-Array01/" rel="prev" title="二维数组中的查找">
-                二维数组中的查找 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -437,8 +412,8 @@ public class Solution8 {
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/27/LeetCodeSolution08/"
-           data-title="String to Integer" data-url="http://yoursite.com/2016/10/27/LeetCodeSolution08/">
+      <div class="ds-thread" data-thread-key="2016/11/17/Solution235/"
+           data-title="Lowest common ancestor（最近公共祖先）" data-url="http://yoursite.com/2016/11/17/Solution235/">
       </div>
     
   </div>
@@ -533,7 +508,7 @@ public class Solution8 {
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目："><span class="nav-number">1.</span> <span class="nav-text">题目：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路："><span class="nav-number">2.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码如下："><span class="nav-number">3.</span> <span class="nav-text">代码如下：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Thoughts"><span class="nav-number">2.</span> <span class="nav-text">Thoughts</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
             
           </div>
         </section>
