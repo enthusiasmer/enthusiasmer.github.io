@@ -251,6 +251,141 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/23/Solution66/" itemprop="url">
+                  Plus One
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-23T12:44:58+08:00" content="2016-11-23">
+              2016-11-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/23/Solution66/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/23/Solution66/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h4><p>Given a non-negative number represented as an array of digits, plus one to the number.</p>
+<p>The digits are stored such that the most significant digit is at the head of the list.<br>开始着这简单的两句，没看懂题目需求到底是啥。。。<br>然后好好揣测了一下：简单点说就是用一个数组代表一个数字，然后这个加1，最后以数组的形式返回。</p>
+<h4 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h4><p>此题考虑两种情况，从后往前判断数字属否小于9，如小于9，直接在最后一个元素上加一后返回即可，如等于9，<br>则需要从后往前遍历，原来等于9的位置置为0，如果全部为9，即最前面的一位为0，这时需要重新new一个数组，<br>长度为原先数组加一，除了第一位为1，其他位都为0；</p>
+<h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><pre><code>public static int[] plusOne(int[] digits){
+        int len=digits.length;
+        for(int i=len-1;i&gt;=0;i--){
+            if(digits[i]&lt;9){
+                digits[i]++;
+                return digits;
+            }
+            digits[i]=0;
+        }
+        int[] newdigits=new int[len+1];
+        newdigits[0]=1;
+        return newdigits;
+    }
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/17/Solution235/" itemprop="url">
                   Lowest common ancestor（最近公共祖先）
                 </a>
@@ -1759,180 +1894,6 @@ public static void main (String[] args) {
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/27/LeetCodeSolution08/" itemprop="url">
-                  String to Integer
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-27T12:43:16+08:00" content="2016-10-27">
-              2016-10-27
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/10/27/LeetCodeSolution08/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/27/LeetCodeSolution08/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>string是不能直接转化为int类型的,所以需要转化为int的对象类型Integer,然后Integer自动拆箱，转化为int.<br>STring str;<br>num=Integer.parseInt(str);</p>
-<h4 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h4><p>Implement atoi to convert a string to an integer.</p>
-<p>Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.</p>
-<p>Notes: It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front.</p>
-<h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><p>首先如果第一个字符为‘+’、‘-’或者‘ ’，就继续向下判定，否则break；<br>如果第一个字符是正负号，用flag记下该字符，然后依次将后面的字符转换为数字，<br>最后进行数字是否越界，以及给result加上之前判定的flag符号。</p>
-<h4 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h4><pre><code>package Algorithms;
-public class Solution8 {
-    public static int myAtoi(String str){
-        double result=0;//一定要定义为double，不能定义为int
-        int flag=1;
-        int count=0;
-        char[] ch=str.toCharArray();
-        for(char c:ch)
-        {
-            count++;
-            if(c&gt;=&apos;0&apos;&amp;&amp;c&lt;=&apos;9&apos;)
-            {
-                result*=10;
-                result+=(c-&apos;0&apos;);
-            }else if(c==&apos;+&apos;&amp;&amp;count==1)
-            {
-                flag=1;
-            }else if(c==&apos;-&apos;&amp;&amp;count==1)
-            {
-                flag=-1;
-            }else if(c==&apos; &apos;&amp;&amp;count==1)
-            {
-                count--;
-            }else
-            {
-                break;
-            }
-        }
-        if(result&gt;Integer.MAX_VALUE)
-        {
-            if(flag==1) 
-            {
-                return Integer.MAX_VALUE;
-            }
-            else
-            {
-                return Integer.MIN_VALUE;
-            }
-        }
-        else
-        {
-            return (int)(flag*result);
-        }
-    }
-    public static void main(String[] args) {
-        String str=&quot;2147483648&quot;;
-        System.out.println(myAtoi(str));
-        System.out.println(Integer.MIN_VALUE);
-    }
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1978,7 +1939,7 @@ public class Solution8 {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
