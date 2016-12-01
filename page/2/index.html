@@ -251,6 +251,149 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/31/data-structure-Array01/" itemprop="url">
+                  二维数组中的查找
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-31T11:20:48+08:00" content="2016-10-31">
+              2016-10-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/数据结构——数组/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构——数组</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/31/data-structure-Array01/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/31/data-structure-Array01/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h4><p>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数，</p>
+<h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><p>如果从中间随意取一个数值比较，那么向右、向下会有重叠的部分，导致下述寻找无法继续下去。</p>
+<p>为了解决这个问题需要考虑选择右上角的数为标准进行比较，因为该位置上的数在该行最大，在该列是最小的，故进行一次比较后，可以减少一列或者一行的查找范围，做到了代码优化的目的。<br><img src="/Img/dataStructure01.jpg" width="300" height="300" ;=""></p>
+<h4 id="Java代码如下："><a href="#Java代码如下：" class="headerlink" title="Java代码如下："></a>Java代码如下：</h4><pre><code>public static boolean Search(int[][] arr, int rows, int columns, int number){
+    boolean found=false;
+    if(arr!=null&amp;&amp;rows&gt;0&amp;&amp;columns&gt;0)
+    {
+        int row=0;
+        int col=columns-1;
+        while(row&lt;rows&amp;&amp;col&gt;=0)
+        {
+            if(arr[row][col]==number)
+            {
+                found=true;
+                break;
+            }else if(arr[row][col]&gt;number){
+                --col;
+            }else{
+                ++row;
+            }
+        }
+    }
+    return found;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/27/LeetCodeSolution08/" itemprop="url">
                   String to Integer
                 </a>
@@ -828,7 +971,7 @@ public class Solution8 {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
