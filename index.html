@@ -251,6 +251,178 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/13/database01/" itemprop="url">
+                  SQL常用语句积累（转）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-13T11:02:41+08:00" content="2016-12-13">
+              2016-12-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/DataBase/" itemprop="url" rel="index">
+                    <span itemprop="name">DataBase</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/13/database01/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/13/database01/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>SQL 常用语句积累：<br>一、 SQL 基本语句<br>SQL 分类：<br>DDL —数据定义语言 (Create ， Alter ， Drop ， DECLARE)<br>DML —数据操纵语言 (Select ， Delete ， Update ， Insert)<br>DCL —数据控制语言 (GRANT ， REVOKE ， COMMIT ， ROLLBACK)</p>
+<p>首先 , 简要介绍基础语句：<br>1 、说明：创建数据库<br>Create DATABASE database-name<br>2 、说明：删除数据库<br>drop database dbname<br>3 、说明：备份 sql server<br>—  创建 备份数据的  device<br>USE master<br>EXEC sp_addumpdevice ‘disk’, ‘testBack’, ‘c:\mssql7backup\MyNwind_1.dat’<br>—  开始 备份<br>BACKUP DATABASE pubs TO testBack<br>4 、说明：创建新表<br>create table tabname(col1 type1 [not null] [primary key],col2 type2 [not null],..)<br>根据已有的表创建新表：<br>A ： create table tab_new like tab_old ( 使用旧表创建新表 )<br>B ： create table tab_new as select col1,col2 …  from tab_old definition only<br>5 、说明：删除新表 drop table tabname<br>6 、说明：增加一个列<br>Alter table tabname add column col type<br>注：列增加后将不能删除。 DB2 中列加上后数据类型也不能改变，唯一能改变的是增加 varchar 类型的长度。<br>7 、说明：添加主键：  Alter table tabname add primary key(col)<br>说明：删除主键：  Alter table tabname drop primary key(col)<br>8 、说明：创建索引： create [unique] index idxname on tabname(col … .)<br>删除索引： drop index idxname<br>注：索引是不可更改的，想更改必须删除重新建。<br>9 、说明：创建视图： create view viewname as select statement<br>删除视图： drop view viewname<br>10 、说明：几个简单的基本的 sql 语句<br>选择： select <em> from table1 where  范围<br>插入： insert into table1(field1,field2) values(value1,value2)<br>删除： delete from table1 where  范围<br>更新： update table1 set field1=value1 where  范围<br>查找： select </em> from table1 where field1 like  ’ %value1% ’  —like 的语法很精妙，查资料 !<br>排序： select <em> from table1 order by field1,field2 [desc]<br>总数： select count </em> as totalcount from table1<br>求和： select sum(field1) as sumvalue from table1<br>平均： select avg(field1) as avgvalue from table1<br>最大： select max(field1) as maxvalue from table1<br>最小： select min(field1) as minvalue from table1<br>11 、说明：几个高级查询运算词<br>A ：  UNION  运算符<br>UNION  运算符通过组合其他两个结果表（例如  TABLE1  和  TABLE2 ）并消去表中任何重复行而派生出一个结果表。当  ALL  随  UNION  一起使用时（即  UNION ALL ），不消除重复行。两种情况下，派生表的每一行不是来自  TABLE1  就是来自  TABLE2 。<br>B ：  EXCEPT  运算符<br>EXCEPT  运算符通过包括所有在  TABLE1  中但不在  TABLE2  中的行并消除所有重复行而派生出一个结果表。当  ALL  随  EXCEPT  一起使用时 (EXCEPT ALL) ，不消除重复行。<br>C ：  INTERSECT  运算符<br>INTERSECT  运算符通过只包括  TABLE1  和  TABLE2  中都有的行并消除所有重复行而派生出一个结果表。当  ALL  随  INTERSECT  一起使用时 (INTERSECT ALL) ，不消除重复行。<br>注：使用运算词的几个查询结果行必须是一致的。<br>12 、说明：使用外连接<br>A 、 left outer join ：<br>左外连接（左连接）：结果集几包括连接表的匹配行，也包括左连接表的所有行。<br>SQL: select a.a, a.b, a.c, b.c, b.d, b.f from a LEFT OUT JOIN b ON a.a = b.c<br>B ： right outer join:<br>右外连接 ( 右连接 ) ：结果集既包括连接表的匹配连接行，也包括右连接表的所有行。<br>C ： full outer join ：<br>全外连接：不仅包括符号连接表的匹配行，还包括两个连接表中的所有记录。</p>
+<p>二、 SQL 子查询语句<br>      1 、单行子查询<br>        select ename,deptno,sal<br>        from emp<br>        where deptno=(select deptno from dept where loc=’NEW YORK’) ；<br>     2 、多行子查询<br>        SELECT ename,job,sal<br>        FROM EMP<br>        WHERE deptno in ( SELECT deptno FROM dept WHERE dname LIKE ‘A%’) ；<br>     3 、多列子查询<br>        SELECT deptno,ename,job,sal<br>        FROM EMP<br>        WHERE (deptno,sal) IN (SELECT deptno,MAX(sal) FROM EMP GROUP BY deptno) ；<br>     4 、内联视图子查询<br>       (1)SELECT ename,job,sal,rownum<br>          FROM (SELECT ename,job,sal FROM EMP ORDER BY sal) ；<br>       (2)SELECT ename,job,sal,rownum<br>          FROM ( SELECT ename,job,sal FROM EMP ORDER BY sal)<br>          WHERE rownum&lt;=5 ；</p>
+<pre><code> 5 、在 HAVING 子句中使用子查询
+    SELECT deptno,job,AVG(sal) FROM EMP GROUP BY deptno,job HAVING AVG(sal)&gt;(SELECT sal FROM EMP WHERE ename=&apos;MARTIN&apos;) ；
+ 6 、内连接   左连接   右连接举例；
+ select sys_user.user_id ,sys_user.user_code  from  sys_user inner join XZFW_BANJIE onsys_user.user_id=XZFW_BANJIE.userid
+小例子：
+ select top 10 * from sys_user  where user_code not in (select  user_code  from sys_user where user_code like &apos;%yzj%&apos;)
+ select top 2 * from (select top 2 *  from td.users order by us_username desc) users order by us_username desc
+ 7 、删除约束语句：
+ alter   table   dbo.XZFW_SYS_USER   drop   CONSTRAINT  FK1772E1891324F678
+  8 、记录数查询
+  select count(user_pass) from sys_user
+  select count(*) from sys_user where user_code!=&apos;admin&apos;
+  9 、在范围之间取值 ( between ... and .. 用法 )
+  select sys_user.user_id,sys_user.user_name,xzfw_shoujian.caseid from sys_user inner join xzfw_shoujian on sys_user.user_id=xzfw_shoujian.userid where user_id between 5 and 100
+  或 select * from sys_user  where user_id&lt;10 and user_id&gt;1
+  10 、 三表查询实例：（三张表为： USER_DETAILS ， Subject ， Score ）
+</code></pre><p>select USER_DETAILS.USER_NAME,Subject.SubjectName,Score.Score from USER_DETAILS inner join Scoreon USER_DETAILS.USER_ID=Score.USER_ID inner join Subject on Score.SubjectID=Subject.SubjectIDwhere USER_DETAILS.USER_ID=1<br>  常用查询举例：</p>
+<p>select <em> from dbo.USER_DETAILS where USER_NAME=’Cheers Li’ and USER_POSITION=’SQE’<br>select </em> from dbo.USER_DEPT<br>select <em> from dbo.USER_DETAILS<br>select top 3</em> from dbo.USER_DETAILS inner join dbo.USER_DEPT onUSER_DETAILS.USER_DEPT_ID=dbo.USER_DEPT.USER_DEPT_ID<br>insert into dbo.USER_DEPT (USER_DEPT_ID,USER_DEPT_NAME)values(‘QE_01’,’Software quality engineer’)<br>update USER_DEPT set USER_DEPT_ID=’QE_02’ where USER_DEPT_NAME=’Quality Control’<br>delete from dbo.USER_DEPT where USER_DEPT_ID=’QE_01’<br>select dbo.USER_DETAILS.USER_NAME,dbo.USER_DETAILS.USER_AGE,dbo.USER_DEPT.USER_DEPT_NAME,USER_DEPT.USER_DEPT_ID fromdbo.USER_DETAILS right join dbo.USER_DEPT onUSER_DETAILS.USER_DEPT_ID=dbo.USER_DEPT.USER_DEPT_ID<br>select count(USER_NAME)from dbo.USER_DETAILS where USER_NAME=’Cheers Li’<br>alter table USER_DEPT add Testcolumn char<br>alter table USER_DEPT drop column Testcolumn<br>select top 3<em> from(select top 3</em> from dbo.USER_DETAILS where USER_DEPT_ID=’DEV_01’ order byUSER_AGE desc)aa order by USER_ID desc</p>
+<p>select * from dbo.USER_DETAILS where USER_NAME=(select max(USER_NAME) fromdbo.USER_DETAILS)</p>
+<p>三、补充常用语句。</p>
+<ol>
+<li>select employees.employee_id,employees.first_name,employees.last_name,salary*(1+0.1) new_salary from hr.employees;</li>
+<li>select employee_id,first_name from hr.employees where first_name like ‘B%’;</li>
+<li>select count(*) from hr.employees where first_name like ‘B%’;</li>
+<li>select job_id,avg(salary),sum(salary),max(salary),count(*) from hr.employees group by job_id;</li>
+</ol>
+<p>其次，大家来看一些不错的 sql 语句<br>1 、说明：复制表 ( 只复制结构 , 源表名： a 新表名： b) (Access 可用 )<br>法一： select <em> into b from a where 1&lt;&gt;1<br>法二： select top 0 </em> into b from a</p>
+<p>2 、说明：拷贝表 ( 拷贝数据 , 源表名： a 目标表名： b) (Access 可用 )<br>insert into b(a, b, c) select d,e,f from b;</p>
+<p>3 、说明：跨数据库之间表的拷贝 ( 具体数据使用绝对路径 ) (Access 可用 )<br>insert into b(a, b, c) select d,e,f from b in ‘具体数据库’ where 条件<br>例子： ..from b in ‘“&amp;Server.MapPath(“.”)&amp;”\data.mdb” &amp;”‘ where..</p>
+<p>4 、说明：子查询 ( 表名 1 ： a 表名 2 ： b)<br>select a,b,c from a where a IN (select d from b ) 或者 : select a,b,c from a where a IN (1,2,3)</p>
+<p>5 、说明：显示文章、提交人和最后回复时间<br>select a.title,a.username,b.adddate from table a,(select max(adddate) adddate from table where table.title=a.title) b</p>
+<p>6 、说明：外连接查询 ( 表名 1 ： a 表名 2 ： b)<br>select a.a, a.b, a.c, b.c, b.d, b.f from a LEFT OUT JOIN b ON a.a = b.c</p>
+<p>7 、说明：在线视图查询 ( 表名 1 ： a )<br>select * from (Select a,b,c FROM a) T where t.a &gt; 1;</p>
+<p>8 、说明： between 的用法 ,between 限制查询数据范围时包括了边界值 ,not between 不包括<br>select * from table1 where time between time1 and time2<br>select a,b,c, from table1 where a not between 数值 1 and 数值 2</p>
+<p>9 、说明： in 的使用方法<br>select * from table1 where a [not] in ( ‘值 1 ’ , ’值 2 ’ , ’值 4 ’ , ’值 6 ’ )</p>
+<p>10 、说明：两张关联表，删除主表中已经在副表中没有的信息<br>delete from table1 where not exists ( select * from table2 where table1.field1=table2.field1 )</p>
+<p>11 、说明：四表联查问题：<br>select * from a left inner join b on a.a=b.b right inner join c on a.a=c.c inner join d on a.a=d.d where …..</p>
+<p>12 、说明：日程安排提前五分钟提醒<br>SQL: select * from 日程安排 where datediff(‘minute’,f 开始时间 ,getdate())&gt;5</p>
+<p>13 、说明：一条 sql 语句搞定数据库分页<br>select top 10 b.* from (select top 20 主键字段 , 排序字段 from 表名 order by 排序字段 desc) a, 表名 b where b. 主键字段 = a. 主键字段 order by a. 排序字段</p>
+<p>14 、说明：前 10 条记录<br>select top 10 * form table1 where 范围</p>
+<p>15 、说明：选择在每一组 b 值相同的数据中对应的 a 最大的记录的所有信息 ( 类似这样的用法可以用于论坛每月排行榜 , 每月热销产品分析 , 按科目成绩排名 , 等等 .)<br>select a,b,c from tablename ta where a=(select max(a) from tablename tb where tb.b=ta.b)</p>
+<p>16 、说明：包括所有在 TableA 中但不在 TableB 和 TableC 中的行并消除所有重复行而派生出一个结果表<br>(select a from tableA ) except (select a from tableB) except (select a from tableC)</p>
+<p>17 、说明：随机取出 10 条数据<br>select top 10 * from tablename order by newid()</p>
+<p>18 、说明：随机选择记录<br>select newid()</p>
+<p>19 、说明：删除重复记录<br>Delete from tablename where id not in (select max(id) from tablename group by col1,col2,…)</p>
+<p>20 、说明：列出数据库里所有的表名<br>select name from sysobjects where type=’U’</p>
+<p>21 、说明：列出表里的所有的<br>select name from syscolumns where id=object_id(‘TableName’)</p>
+<p>22 、说明：列示 type 、 vender 、 pcs 字段，以 type 字段排列， case 可以方便地实现多重选择，类似 select 中的 case 。<br>select type,sum(case vender when ‘A’ then pcs else 0 end),sum(case vender when ‘C’ then pcs else 0 end),sum(case vender when ‘B’ then pcs else 0 end) FROM tablename group by type<br>显示结果：<br>type vender pcs<br>电脑 A 1<br>电脑 A 1<br>光盘 B 2<br>光盘 A 2<br>手机 B 3<br>手机 C 3</p>
+<p>23 、说明：初始化表 table1<br>TRUNCATE TABLE table1</p>
+<p>24 、说明：选择从 10 到 15 的记录<br>select top 5 <em> from (select top 15 </em> from table order by id asc) table_ 别名 order by id desc<br>数据库基本理论整理：<br>通俗地理解三个范式<br>通俗地理解三个范式，对于数据库设计大有好处。在数据库设计中，为了更好地应用三个范式，就必须通俗地理解三个范式 ( 通俗地理解是够用的理解，并不是最科学最准确的理解 ) ：<br>第一范式： 1NF 是对属性的原子性约束，要求属性具有原子性，不可再分解；<br>第二范式： 2NF 是对记录的惟一性约束，要求记录有惟一标识，即实体的惟一性；<br>第三范式： 3NF 是对字段冗余性的约束，即任何字段不能由其他字段派生出来，它要求字段没有冗余。<br>没有冗余的数据库设计可以做到。但是，没有冗余的数据库未必是最好的数据库，有时为了提高运行效率，就必须降低范式标准，适当保留冗余数据。具体做法是：在概念数据模型设计时遵守第三范式，降低范式标准的工作放到物理数据模型设计时考虑。降低范式就是增加字段，允许冗余。<br>        基本表及其字段之间的关系 , 应尽量满足第三范式。但是，满足第三范式的数据库设计，往往不是最好的设计。为了提高数据库的运行效率，常常需要降低范式标准：适当增加冗余，达到以空间换时间的目的。<br>〖例 2 〗：有一张存放商品的基本表，如表 1 所示。“金额”这个字段的存在，表明该表的设计不满足第三范式，因为“金额”可以由“单价”乘以“数量”得到，说明“金额”是冗余字段。但是，增加“金额”这个冗余字段，可以提高查询统计的速度，这就是以空间换时间的作法。<br>在 Rose 中，规定列有两种类型：数据列和计算列。“金额”这样的列被称为“计算列”，而“单价”和“数量”这样的列被称为“数据列”。<br>表 1 商品表的表结构<br>商品名称 商品型号 单价 数量 金额<br>电视机 29 吋 2500 40 100,000</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/01/Solution232/" itemprop="url">
                   Implement Queue using Stacks
                 </a>
@@ -1621,283 +1793,6 @@ public class DynamicProgramming {
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/01/regular-expressions-for-java/" itemprop="url">
-                  Java正则表达式————入门(转)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-01T19:47:32+08:00" content="2016-11-01">
-              2016-11-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/01/regular-expressions-for-java/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/01/regular-expressions-for-java/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>众所周知，在程序开发中，难免会遇到需要匹配、查找、替换、判断字符串的情况发生，而这些情况有时又比较复杂，如果用纯编码方式解决，往往会浪费程序员的时间及精力。因此，学习及使用正则表达式，便成了解决这一矛盾的主要手段。<br>大 家都知道，正则表达式是一种可以用于模式匹配和替换的规范，一个正则表达式就是由普通的字符（例如字符a到z）以及特殊字符（元字符）组成的文字模式，它 用以描述在查找文字主体时待匹配的一个或多个字符串。正则表达式作为一个模板，将某个字符模式与所搜索的字符串进行匹配。<br>自从jdk1.4推出java.util.regex包，就为我们提供了很好的JAVA正则表达式应用平台。</p>
-<p>因为正则表达式是一个很庞杂的体系，所以我仅例举些入门的概念，更多的请参阅相关书籍及自行摸索。 </p>
-<p>\ 反斜杠<br>\t 间隔 (‘/u0009’)<br>\n 换行 (‘/u000A’)<br>\r 回车 (‘/u000D’)<br>\d 数字 等价于[0-9]<br>\D 非数字 等价于[^0-9]<br>\s 空白符号 [/t/n/x0B/f/r]<br>\S 非空白符号 [^/t/n/x0B/f/r]<br>\w 单独字符 [a-zA-Z_0-9]<br>\W 非单独字符 [^a-zA-Z_0-9]<br>\f 换页符<br>\e Escape<br>\b 一个单词的边界<br>\B 一个非单词的边界<br>\G 前一个匹配的结束</p>
-<p>^为限制开头<br>^java     条件限制为以Java为开头字符<br>$为限制结尾<br>java$     条件限制为以java为结尾字符<br>.  条件限制除/n以外任意一个单独字符<br>java..     条件限制为java后除换行外任意两个字符</p>
-<p>加入特定限制条件「[]」<br>[a-z]     条件限制在小写a to z范围中一个字符<br>[A-Z]     条件限制在大写A to Z范围中一个字符<br>[a-zA-Z] 条件限制在小写a to z或大写A to Z范围中一个字符<br>[0-9]     条件限制在小写0 to 9范围中一个字符<br>[0-9a-z] 条件限制在小写0 to 9或a to z范围中一个字符<br>[0-9[a-z]] 条件限制在小写0 to 9或a to z范围中一个字符(交集)</p>
-<p>[]中加入^后加再次限制条件「[^]」<br>[^a-z]     条件限制在非小写a to z范围中一个字符<br>[^A-Z]     条件限制在非大写A to Z范围中一个字符<br>[^a-zA-Z] 条件限制在非小写a to z或大写A to Z范围中一个字符<br>[^0-9]     条件限制在非小写0 to 9范围中一个字符<br>[^0-9a-z] 条件限制在非小写0 to 9或a to z范围中一个字符<br>[^0-9[a-z]] 条件限制在非小写0 to 9或a to z范围中一个字符(交集)</p>
-<p>在限制条件为特定字符出现0次以上时，可以使用「<em>」<br>J</em>     0个以上J<br>.<em>     0个以上任意字符<br>J.</em>D     J与D之间0个以上任意字符</p>
-<p>在限制条件为特定字符出现1次以上时，可以使用「+」<br>J+     1个以上J<br>.+     1个以上任意字符<br>J.+D     J与D之间1个以上任意字符</p>
-<p>在限制条件为特定字符出现有0或1次以上时，可以使用「?」<br>JA?     J或者JA出现</p>
-<p>限制为连续出现指定次数字符「{a}」<br>J{2}     JJ<br>J{3}     JJJ<br>文字a个以上，并且「{a,}」<br>J{3,}     JJJ,JJJJ,JJJJJ,???(3次以上J并存)<br>文字a个以上，b个以下「{a,b}」<br>J{3,5}     JJJ或JJJJ或JJJJJ<br>两者取一「|」<br>J|A     J或A<br>Java|Hello     Java或Hello</p>
-<p>「()」中规定一个组合类型<br>比如，我查询<a href="/"index.html/"">index</a>中<a href=""></a>间的数据，可写作<a.*href= ".*="" "="">(.+?)</a.*href=></p>
-<p>在使用Pattern.compile函数时，可以加入控制正则表达式的匹配行为的参数：<br>Pattern Pattern.compile(String regex, int flag)</p>
-<p>flag的取值范围如下：<br>Pattern.CANON_EQ     当且仅当两个字符的”正规分解(canonical decomposition)”都完全相同的情况下，才认定匹配。比如用了这个标志之后，表达式”a/u030A”会匹配”?”。默认情况下，不考虑”规 范相等性(canonical equivalence)”。<br>Pattern.CASE_INSENSITIVE(?i)     默认情况下，大小写不明感的匹配只适用于US-ASCII字符集。这个标志能让表达式忽略大小写进行匹配。要想对Unicode字符进行大小不明感的匹 配，只要将UNICODE_CASE与这个标志合起来就行了。<br>Pattern.COMMENTS(?x)     在这种模式下，匹配时会忽略(正则表达式里的)空格字符(译者注：不是指表达式里的”//s”，而是指表达式里的空格，tab，回车之类)。注释从#开始，一直到这行结束。可以通过嵌入式的标志来启用Unix行模式。<br>Pattern.DOTALL(?s)     在这种模式下，表达式’.’可以匹配任意字符，包括表示一行的结束符。默认情况下，表达式’.’不匹配行的结束符。<br>Pattern.MULTILINE<br>(?m)     在这种模式下，’^’和’$’分别匹配一行的开始和结束。此外，’^’仍然匹配字符串的开始，’$’也匹配字符串的结束。默认情况下，这两个表达式仅仅匹配字符串的开始和结束。<br>Pattern.UNICODE_CASE<br>(?u)     在这个模式下，如果你还启用了CASE_INSENSITIVE标志，那么它会对Unicode字符进行大小写不明感的匹配。默认情况下，大小写不敏感的匹配只适用于US-ASCII字符集。<br>Pattern.UNIX_LINES(?d)     在这个模式下，只有’/n’才被认作一行的中止，并且与’.’，’^’，以及’$’进行匹配。</p>
-<p>抛开空泛的概念，下面写出几个简单的Java正则用例：</p>
-<p>◆比如，在字符串包含验证时</p>
-<pre><code>//查找以Java开头,任意结尾的字符串
-  Pattern pattern = Pattern.compile(&quot;^Java.*&quot;);
-  Matcher matcher = pattern.matcher(&quot;Java不是人&quot;);
-  boolean b= matcher.matches();
-  //当条件满足时，将返回true，否则返回false
-  System.out.println(b);
-</code></pre><p>◆以多条件分割字符串时</p>
-<pre><code>Pattern pattern = Pattern.compile(&quot;[, |]+&quot;);
-String[] strs = pattern.split(&quot;Java Hello World  Java,Hello,,World|Sun&quot;);
-for (int i=0;i&lt;strs.length;i++) {
-    System.out.println(strs[i]);
-} 
-</code></pre><p>◆文字替换（首次出现字符）</p>
-<pre><code>Pattern pattern = Pattern.compile(&quot;正则表达式&quot;);
-Matcher matcher = pattern.matcher(&quot;正则表达式 Hello World,正则表达式 Hello World&quot;);
-//替换第一个符合正则的数据
-System.out.println(matcher.replaceFirst(&quot;Java&quot;));
-</code></pre><p>◆文字替换（全部）</p>
-<pre><code>Pattern pattern = Pattern.compile(&quot;正则表达式&quot;);
-Matcher matcher = pattern.matcher(&quot;正则表达式 Hello World,正则表达式 Hello World&quot;);
-//替换第一个符合正则的数据
-System.out.println(matcher.replaceAll(&quot;Java&quot;));
-</code></pre><p>◆文字替换（置换字符）</p>
-<pre><code>Pattern pattern = Pattern.compile(&quot;正则表达式&quot;);
-Matcher matcher = pattern.matcher(&quot;正则表达式 Hello World,正则表达式 Hello World &quot;);
-StringBuffer sbr = new StringBuffer();
-while (matcher.find()) {
-    matcher.appendReplacement(sbr, &quot;Java&quot;);
-}
-matcher.appendTail(sbr);
-System.out.println(sbr.toString());
-</code></pre><font color="#FF0000">◆验证是否为邮箱地址</font><br><font color="#FF0000">\w+@([0-9a-zA-Z]+[-0-9a-zA-Z]<em>)(\.[0-9a-zA-Z]+[-0-9a-zA-Z]*</em>)+</font>
-
-<pre><code>String str=&quot;ceponline@yahoo.com.cn&quot;;
-Pattern pattern = Pattern.compile(&quot;[//w//.//-]+@([//w//-]+//.)+[//w//-]+&quot;,Pattern.CASE_INSENSITIVE);
-Matcher matcher = pattern.matcher(str);
-System.out.println(matcher.matches());
-</code></pre><p>◆去除html标记</p>
-<pre><code>Pattern pattern = Pattern.compile(&quot;&lt;.+?&gt;&quot;, Pattern.DOTALL);
-Matcher matcher = pattern.matcher(&quot;&lt;a href=/&quot;index.html/&quot;&gt;主页&lt;/a&gt;&quot;);
-tring string = matcher.replaceAll(&quot;&quot;);
-System.out.println(string);
-</code></pre><p>◆查找html中对应条件字符串</p>
-<pre><code>Pattern pattern = Pattern.compile(&quot;href=/&quot;(.+?)/&quot;&quot;);
-Matcher matcher = pattern.matcher(&quot;&lt;a href=/&quot;index.html/&quot;&gt;主页&lt;/a&gt;&quot;);
-if(matcher.find())
-System.out.println(matcher.group(1));
-}
-</code></pre><p>◆截取<a href="http://地址" target="_blank" rel="external">http://地址</a></p>
-<pre><code>//截取url
-Pattern pattern = Pattern.compile(&quot;(http://|https://){1}[//w//.//-/:]+&quot;);
-Matcher matcher = pattern.matcher(&quot;dsdsds&lt;http://dsds//gfgffdfd&gt;fdf&quot;);
-StringBuffer buffer = new StringBuffer();
-while(matcher.find()){              
-    buffer.append(matcher.group());        
-    buffer.append(&quot;/r/n&quot;);              
-System.out.println(buffer.toString());
-}
-</code></pre><p>◆替换指定{}中文字</p>
-<pre><code>String str = &quot;Java目前的发展史是由{0}年-{1}年&quot;;
-String[][] object={new String[]{&quot;//{0//}&quot;,&quot;1995&quot;},new String[]{&quot;//{1//}&quot;,&quot;2007&quot;}};
-System.out.println(replace(str,object));
-
-public static String replace(final String sourceString,Object[] object) {
-    String temp=sourceString;    
-    for(int i=0;i&lt;object.length;i++){
-              String[] result=(String[])object[i];
-       Pattern    pattern = Pattern.compile(result[0]);
-       Matcher matcher = pattern.matcher(temp);
-       temp=matcher.replaceAll(result[1]);
-    }
-    return temp;
-}
-</code></pre><p>◆以正则条件查询指定目录下文件</p>
-<pre><code>//用于缓存文件列表
-private ArrayList files = new ArrayList();
-//用于承载文件路径
-private String _path;
-//用于承载未合并的正则公式
-private String _regexp;
-class MyFileFilter implements FileFilter {
-
-      /**
-       * 匹配文件名称
-       */
-      public boolean accept(File file) {
-        try {
-          Pattern pattern = Pattern.compile(_regexp);
-          Matcher match = pattern.matcher(file.getName());                
-          return match.matches();
-        } catch (Exception e) {
-          return true;
-        }
-      }
-    }
-
-/**
- * 解析输入流
- * @param inputs
- */
-FilesAnalyze (String path,String regexp){
-    getFileName(path,regexp);
-}
-
-/**
- * 分析文件名并加入files
- * @param input
- */
-private void getFileName(String path,String regexp) {
-    //目录
-      _path=path;
-      _regexp=regexp;
-      File directory = new File(_path);
-      File[] filesFile = directory.listFiles(new MyFileFilter());
-      if (filesFile == null) return;
-      for (int j = 0; j &lt; filesFile.length; j++) {
-        files.add(filesFile[j]);
-      }
-      return;
-    }
-
-/**
- * 显示输出信息
- * @param out
- */
-public void print (PrintStream out) {
-    Iterator elements = files.iterator();
-    while (elements.hasNext()) {
-        File file=(File) elements.next();
-            out.println(file.getPath());    
-    }
-}
-
-public static void output(String path,String regexp) {
-
-    FilesAnalyze fileGroup1 = new FilesAnalyze(path,regexp);
-    fileGroup1.print(System.out);
-}
-
-public static void main (String[] args) {
-    output(&quot;C://&quot;,&quot;[A-z|.]*&quot;);
-}
-</code></pre><p>Java正则的功用还有很多，事实上只要是字符处理，就没有正则做不到的事情存在。（当然，正则解释时较耗时间就是了|||……）<br>Ps:此文中有很多地方“\”写成了“/”，未及时更正，请见谅。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1943,7 +1838,7 @@ public static void main (String[] args) {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1951,7 +1846,7 @@ public static void main (String[] args) {
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

@@ -1,0 +1,689 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="SQL 常用语句积累：一、 SQL 基本语句SQL 分类：DDL —数据定义语言 (Create ， Alter ， Drop ， DECLARE)DML —数据操纵语言 (Select ， Delete ， Update ， Insert)DCL —数据控制语言 (GRANT ， REVOKE ， COMMIT ， ROLLBACK)
+首先 , 简要介绍基础语句：1 、说明：创建数据库Creat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL常用语句积累（转）">
+<meta property="og:url" content="http://yoursite.com/2016/12/13/database01/index.html">
+<meta property="og:site_name" content="Walnut code">
+<meta property="og:description" content="SQL 常用语句积累：一、 SQL 基本语句SQL 分类：DDL —数据定义语言 (Create ， Alter ， Drop ， DECLARE)DML —数据操纵语言 (Select ， Delete ， Update ， Insert)DCL —数据控制语言 (GRANT ， REVOKE ， COMMIT ， ROLLBACK)
+首先 , 简要介绍基础语句：1 、说明：创建数据库Creat">
+<meta property="og:updated_time" content="2016-12-13T03:04:28.554Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL常用语句积累（转）">
+<meta name="twitter:description" content="SQL 常用语句积累：一、 SQL 基本语句SQL 分类：DDL —数据定义语言 (Create ， Alter ， Drop ， DECLARE)DML —数据操纵语言 (Select ， Delete ， Update ， Insert)DCL —数据控制语言 (GRANT ， REVOKE ， COMMIT ， ROLLBACK)
+首先 , 简要介绍基础语句：1 、说明：创建数据库Creat">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/13/database01/"/>
+
+
+  <title> SQL常用语句积累（转） | Walnut code </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ec7a3a75cdba2742c2bbf191075f4834";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Walnut code</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                SQL常用语句积累（转）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-13T11:02:41+08:00" content="2016-12-13">
+              2016-12-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/DataBase/" itemprop="url" rel="index">
+                    <span itemprop="name">DataBase</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/13/database01/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/13/database01/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>SQL 常用语句积累：<br>一、 SQL 基本语句<br>SQL 分类：<br>DDL —数据定义语言 (Create ， Alter ， Drop ， DECLARE)<br>DML —数据操纵语言 (Select ， Delete ， Update ， Insert)<br>DCL —数据控制语言 (GRANT ， REVOKE ， COMMIT ， ROLLBACK)</p>
+<p>首先 , 简要介绍基础语句：<br>1 、说明：创建数据库<br>Create DATABASE database-name<br>2 、说明：删除数据库<br>drop database dbname<br>3 、说明：备份 sql server<br>—  创建 备份数据的  device<br>USE master<br>EXEC sp_addumpdevice ‘disk’, ‘testBack’, ‘c:\mssql7backup\MyNwind_1.dat’<br>—  开始 备份<br>BACKUP DATABASE pubs TO testBack<br>4 、说明：创建新表<br>create table tabname(col1 type1 [not null] [primary key],col2 type2 [not null],..)<br>根据已有的表创建新表：<br>A ： create table tab_new like tab_old ( 使用旧表创建新表 )<br>B ： create table tab_new as select col1,col2 …  from tab_old definition only<br>5 、说明：删除新表 drop table tabname<br>6 、说明：增加一个列<br>Alter table tabname add column col type<br>注：列增加后将不能删除。 DB2 中列加上后数据类型也不能改变，唯一能改变的是增加 varchar 类型的长度。<br>7 、说明：添加主键：  Alter table tabname add primary key(col)<br>说明：删除主键：  Alter table tabname drop primary key(col)<br>8 、说明：创建索引： create [unique] index idxname on tabname(col … .)<br>删除索引： drop index idxname<br>注：索引是不可更改的，想更改必须删除重新建。<br>9 、说明：创建视图： create view viewname as select statement<br>删除视图： drop view viewname<br>10 、说明：几个简单的基本的 sql 语句<br>选择： select <em> from table1 where  范围<br>插入： insert into table1(field1,field2) values(value1,value2)<br>删除： delete from table1 where  范围<br>更新： update table1 set field1=value1 where  范围<br>查找： select </em> from table1 where field1 like  ’ %value1% ’  —like 的语法很精妙，查资料 !<br>排序： select <em> from table1 order by field1,field2 [desc]<br>总数： select count </em> as totalcount from table1<br>求和： select sum(field1) as sumvalue from table1<br>平均： select avg(field1) as avgvalue from table1<br>最大： select max(field1) as maxvalue from table1<br>最小： select min(field1) as minvalue from table1<br>11 、说明：几个高级查询运算词<br>A ：  UNION  运算符<br>UNION  运算符通过组合其他两个结果表（例如  TABLE1  和  TABLE2 ）并消去表中任何重复行而派生出一个结果表。当  ALL  随  UNION  一起使用时（即  UNION ALL ），不消除重复行。两种情况下，派生表的每一行不是来自  TABLE1  就是来自  TABLE2 。<br>B ：  EXCEPT  运算符<br>EXCEPT  运算符通过包括所有在  TABLE1  中但不在  TABLE2  中的行并消除所有重复行而派生出一个结果表。当  ALL  随  EXCEPT  一起使用时 (EXCEPT ALL) ，不消除重复行。<br>C ：  INTERSECT  运算符<br>INTERSECT  运算符通过只包括  TABLE1  和  TABLE2  中都有的行并消除所有重复行而派生出一个结果表。当  ALL  随  INTERSECT  一起使用时 (INTERSECT ALL) ，不消除重复行。<br>注：使用运算词的几个查询结果行必须是一致的。<br>12 、说明：使用外连接<br>A 、 left outer join ：<br>左外连接（左连接）：结果集几包括连接表的匹配行，也包括左连接表的所有行。<br>SQL: select a.a, a.b, a.c, b.c, b.d, b.f from a LEFT OUT JOIN b ON a.a = b.c<br>B ： right outer join:<br>右外连接 ( 右连接 ) ：结果集既包括连接表的匹配连接行，也包括右连接表的所有行。<br>C ： full outer join ：<br>全外连接：不仅包括符号连接表的匹配行，还包括两个连接表中的所有记录。</p>
+<p>二、 SQL 子查询语句<br>      1 、单行子查询<br>        select ename,deptno,sal<br>        from emp<br>        where deptno=(select deptno from dept where loc=’NEW YORK’) ；<br>     2 、多行子查询<br>        SELECT ename,job,sal<br>        FROM EMP<br>        WHERE deptno in ( SELECT deptno FROM dept WHERE dname LIKE ‘A%’) ；<br>     3 、多列子查询<br>        SELECT deptno,ename,job,sal<br>        FROM EMP<br>        WHERE (deptno,sal) IN (SELECT deptno,MAX(sal) FROM EMP GROUP BY deptno) ；<br>     4 、内联视图子查询<br>       (1)SELECT ename,job,sal,rownum<br>          FROM (SELECT ename,job,sal FROM EMP ORDER BY sal) ；<br>       (2)SELECT ename,job,sal,rownum<br>          FROM ( SELECT ename,job,sal FROM EMP ORDER BY sal)<br>          WHERE rownum&lt;=5 ；</p>
+<pre><code> 5 、在 HAVING 子句中使用子查询
+    SELECT deptno,job,AVG(sal) FROM EMP GROUP BY deptno,job HAVING AVG(sal)&gt;(SELECT sal FROM EMP WHERE ename=&apos;MARTIN&apos;) ；
+ 6 、内连接   左连接   右连接举例；
+ select sys_user.user_id ,sys_user.user_code  from  sys_user inner join XZFW_BANJIE onsys_user.user_id=XZFW_BANJIE.userid
+小例子：
+ select top 10 * from sys_user  where user_code not in (select  user_code  from sys_user where user_code like &apos;%yzj%&apos;)
+ select top 2 * from (select top 2 *  from td.users order by us_username desc) users order by us_username desc
+ 7 、删除约束语句：
+ alter   table   dbo.XZFW_SYS_USER   drop   CONSTRAINT  FK1772E1891324F678
+  8 、记录数查询
+  select count(user_pass) from sys_user
+  select count(*) from sys_user where user_code!=&apos;admin&apos;
+  9 、在范围之间取值 ( between ... and .. 用法 )
+  select sys_user.user_id,sys_user.user_name,xzfw_shoujian.caseid from sys_user inner join xzfw_shoujian on sys_user.user_id=xzfw_shoujian.userid where user_id between 5 and 100
+  或 select * from sys_user  where user_id&lt;10 and user_id&gt;1
+  10 、 三表查询实例：（三张表为： USER_DETAILS ， Subject ， Score ）
+</code></pre><p>select USER_DETAILS.USER_NAME,Subject.SubjectName,Score.Score from USER_DETAILS inner join Scoreon USER_DETAILS.USER_ID=Score.USER_ID inner join Subject on Score.SubjectID=Subject.SubjectIDwhere USER_DETAILS.USER_ID=1<br>  常用查询举例：</p>
+<p>select <em> from dbo.USER_DETAILS where USER_NAME=’Cheers Li’ and USER_POSITION=’SQE’<br>select </em> from dbo.USER_DEPT<br>select <em> from dbo.USER_DETAILS<br>select top 3</em> from dbo.USER_DETAILS inner join dbo.USER_DEPT onUSER_DETAILS.USER_DEPT_ID=dbo.USER_DEPT.USER_DEPT_ID<br>insert into dbo.USER_DEPT (USER_DEPT_ID,USER_DEPT_NAME)values(‘QE_01’,’Software quality engineer’)<br>update USER_DEPT set USER_DEPT_ID=’QE_02’ where USER_DEPT_NAME=’Quality Control’<br>delete from dbo.USER_DEPT where USER_DEPT_ID=’QE_01’<br>select dbo.USER_DETAILS.USER_NAME,dbo.USER_DETAILS.USER_AGE,dbo.USER_DEPT.USER_DEPT_NAME,USER_DEPT.USER_DEPT_ID fromdbo.USER_DETAILS right join dbo.USER_DEPT onUSER_DETAILS.USER_DEPT_ID=dbo.USER_DEPT.USER_DEPT_ID<br>select count(USER_NAME)from dbo.USER_DETAILS where USER_NAME=’Cheers Li’<br>alter table USER_DEPT add Testcolumn char<br>alter table USER_DEPT drop column Testcolumn<br>select top 3<em> from(select top 3</em> from dbo.USER_DETAILS where USER_DEPT_ID=’DEV_01’ order byUSER_AGE desc)aa order by USER_ID desc</p>
+<p>select * from dbo.USER_DETAILS where USER_NAME=(select max(USER_NAME) fromdbo.USER_DETAILS)</p>
+<p>三、补充常用语句。</p>
+<ol>
+<li>select employees.employee_id,employees.first_name,employees.last_name,salary*(1+0.1) new_salary from hr.employees;</li>
+<li>select employee_id,first_name from hr.employees where first_name like ‘B%’;</li>
+<li>select count(*) from hr.employees where first_name like ‘B%’;</li>
+<li>select job_id,avg(salary),sum(salary),max(salary),count(*) from hr.employees group by job_id;</li>
+</ol>
+<p>其次，大家来看一些不错的 sql 语句<br>1 、说明：复制表 ( 只复制结构 , 源表名： a 新表名： b) (Access 可用 )<br>法一： select <em> into b from a where 1&lt;&gt;1<br>法二： select top 0 </em> into b from a</p>
+<p>2 、说明：拷贝表 ( 拷贝数据 , 源表名： a 目标表名： b) (Access 可用 )<br>insert into b(a, b, c) select d,e,f from b;</p>
+<p>3 、说明：跨数据库之间表的拷贝 ( 具体数据使用绝对路径 ) (Access 可用 )<br>insert into b(a, b, c) select d,e,f from b in ‘具体数据库’ where 条件<br>例子： ..from b in ‘“&amp;Server.MapPath(“.”)&amp;”\data.mdb” &amp;”‘ where..</p>
+<p>4 、说明：子查询 ( 表名 1 ： a 表名 2 ： b)<br>select a,b,c from a where a IN (select d from b ) 或者 : select a,b,c from a where a IN (1,2,3)</p>
+<p>5 、说明：显示文章、提交人和最后回复时间<br>select a.title,a.username,b.adddate from table a,(select max(adddate) adddate from table where table.title=a.title) b</p>
+<p>6 、说明：外连接查询 ( 表名 1 ： a 表名 2 ： b)<br>select a.a, a.b, a.c, b.c, b.d, b.f from a LEFT OUT JOIN b ON a.a = b.c</p>
+<p>7 、说明：在线视图查询 ( 表名 1 ： a )<br>select * from (Select a,b,c FROM a) T where t.a &gt; 1;</p>
+<p>8 、说明： between 的用法 ,between 限制查询数据范围时包括了边界值 ,not between 不包括<br>select * from table1 where time between time1 and time2<br>select a,b,c, from table1 where a not between 数值 1 and 数值 2</p>
+<p>9 、说明： in 的使用方法<br>select * from table1 where a [not] in ( ‘值 1 ’ , ’值 2 ’ , ’值 4 ’ , ’值 6 ’ )</p>
+<p>10 、说明：两张关联表，删除主表中已经在副表中没有的信息<br>delete from table1 where not exists ( select * from table2 where table1.field1=table2.field1 )</p>
+<p>11 、说明：四表联查问题：<br>select * from a left inner join b on a.a=b.b right inner join c on a.a=c.c inner join d on a.a=d.d where …..</p>
+<p>12 、说明：日程安排提前五分钟提醒<br>SQL: select * from 日程安排 where datediff(‘minute’,f 开始时间 ,getdate())&gt;5</p>
+<p>13 、说明：一条 sql 语句搞定数据库分页<br>select top 10 b.* from (select top 20 主键字段 , 排序字段 from 表名 order by 排序字段 desc) a, 表名 b where b. 主键字段 = a. 主键字段 order by a. 排序字段</p>
+<p>14 、说明：前 10 条记录<br>select top 10 * form table1 where 范围</p>
+<p>15 、说明：选择在每一组 b 值相同的数据中对应的 a 最大的记录的所有信息 ( 类似这样的用法可以用于论坛每月排行榜 , 每月热销产品分析 , 按科目成绩排名 , 等等 .)<br>select a,b,c from tablename ta where a=(select max(a) from tablename tb where tb.b=ta.b)</p>
+<p>16 、说明：包括所有在 TableA 中但不在 TableB 和 TableC 中的行并消除所有重复行而派生出一个结果表<br>(select a from tableA ) except (select a from tableB) except (select a from tableC)</p>
+<p>17 、说明：随机取出 10 条数据<br>select top 10 * from tablename order by newid()</p>
+<p>18 、说明：随机选择记录<br>select newid()</p>
+<p>19 、说明：删除重复记录<br>Delete from tablename where id not in (select max(id) from tablename group by col1,col2,…)</p>
+<p>20 、说明：列出数据库里所有的表名<br>select name from sysobjects where type=’U’</p>
+<p>21 、说明：列出表里的所有的<br>select name from syscolumns where id=object_id(‘TableName’)</p>
+<p>22 、说明：列示 type 、 vender 、 pcs 字段，以 type 字段排列， case 可以方便地实现多重选择，类似 select 中的 case 。<br>select type,sum(case vender when ‘A’ then pcs else 0 end),sum(case vender when ‘C’ then pcs else 0 end),sum(case vender when ‘B’ then pcs else 0 end) FROM tablename group by type<br>显示结果：<br>type vender pcs<br>电脑 A 1<br>电脑 A 1<br>光盘 B 2<br>光盘 A 2<br>手机 B 3<br>手机 C 3</p>
+<p>23 、说明：初始化表 table1<br>TRUNCATE TABLE table1</p>
+<p>24 、说明：选择从 10 到 15 的记录<br>select top 5 <em> from (select top 15 </em> from table order by id asc) table_ 别名 order by id desc<br>数据库基本理论整理：<br>通俗地理解三个范式<br>通俗地理解三个范式，对于数据库设计大有好处。在数据库设计中，为了更好地应用三个范式，就必须通俗地理解三个范式 ( 通俗地理解是够用的理解，并不是最科学最准确的理解 ) ：<br>第一范式： 1NF 是对属性的原子性约束，要求属性具有原子性，不可再分解；<br>第二范式： 2NF 是对记录的惟一性约束，要求记录有惟一标识，即实体的惟一性；<br>第三范式： 3NF 是对字段冗余性的约束，即任何字段不能由其他字段派生出来，它要求字段没有冗余。<br>没有冗余的数据库设计可以做到。但是，没有冗余的数据库未必是最好的数据库，有时为了提高运行效率，就必须降低范式标准，适当保留冗余数据。具体做法是：在概念数据模型设计时遵守第三范式，降低范式标准的工作放到物理数据模型设计时考虑。降低范式就是增加字段，允许冗余。<br>        基本表及其字段之间的关系 , 应尽量满足第三范式。但是，满足第三范式的数据库设计，往往不是最好的设计。为了提高数据库的运行效率，常常需要降低范式标准：适当增加冗余，达到以空间换时间的目的。<br>〖例 2 〗：有一张存放商品的基本表，如表 1 所示。“金额”这个字段的存在，表明该表的设计不满足第三范式，因为“金额”可以由“单价”乘以“数量”得到，说明“金额”是冗余字段。但是，增加“金额”这个冗余字段，可以提高查询统计的速度，这就是以空间换时间的作法。<br>在 Rose 中，规定列有两种类型：数据列和计算列。“金额”这样的列被称为“计算列”，而“单价”和“数量”这样的列被称为“数据列”。<br>表 1 商品表的表结构<br>商品名称 商品型号 单价 数量 金额<br>电视机 29 吋 2500 40 100,000</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/01/Solution232/" rel="next" title="Implement Queue using Stacks">
+                <i class="fa fa-chevron-left"></i> Implement Queue using Stacks
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/13/database01/"
+           data-title="SQL常用语句积累（转）" data-url="http://yoursite.com/2016/12/13/database01/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/fish.jpg"
+               alt="Enthusiasm" />
+          <p class="site-author-name" itemprop="name">Enthusiasm</p>
+          <p class="site-description motion-element" itemprop="description">coder</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/enthusiasmer" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Enthusiasm</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"iissnan-notes"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
