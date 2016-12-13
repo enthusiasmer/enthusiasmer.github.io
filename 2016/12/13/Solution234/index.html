@@ -84,24 +84,22 @@
 
 
 
-<meta name="description" content="题目：在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数，
-思路：如果从中间随意取一个数值比较，那么向右、向下会有重叠的部分，导致下述寻找无法继续下去。
-为了解决这个问题需要考虑选择右上角的数为标准进行比较，因为该位置上的数在该行最大，在该列是最小的，故进行一次比较后，可以减少一列或者一行的">
+<meta name="description" content="ProblemGiven a singly linked list, determine if it is a palindrome.
+ThoughtsThis can be solved by reversing the 2nd half and compare the two halves. Let’s start with an example [1, 1, 2, 1].
+In the be">
 <meta property="og:type" content="article">
-<meta property="og:title" content="二维数组中的查找">
-<meta property="og:url" content="http://yoursite.com/2016/10/31/data-structure-Array01/index.html">
+<meta property="og:title" content="Palindrome Linked List">
+<meta property="og:url" content="http://yoursite.com/2016/12/13/Solution234/index.html">
 <meta property="og:site_name" content="Walnut code">
-<meta property="og:description" content="题目：在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数，
-思路：如果从中间随意取一个数值比较，那么向右、向下会有重叠的部分，导致下述寻找无法继续下去。
-为了解决这个问题需要考虑选择右上角的数为标准进行比较，因为该位置上的数在该行最大，在该列是最小的，故进行一次比较后，可以减少一列或者一行的">
-<meta property="og:image" content="http://yoursite.com/Img/dataStructure01.jpg">
-<meta property="og:updated_time" content="2016-11-01T12:52:06.639Z">
+<meta property="og:description" content="ProblemGiven a singly linked list, determine if it is a palindrome.
+ThoughtsThis can be solved by reversing the 2nd half and compare the two halves. Let’s start with an example [1, 1, 2, 1].
+In the be">
+<meta property="og:updated_time" content="2016-12-13T11:28:27.946Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="二维数组中的查找">
-<meta name="twitter:description" content="题目：在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数，
-思路：如果从中间随意取一个数值比较，那么向右、向下会有重叠的部分，导致下述寻找无法继续下去。
-为了解决这个问题需要考虑选择右上角的数为标准进行比较，因为该位置上的数在该行最大，在该列是最小的，故进行一次比较后，可以减少一列或者一行的">
-<meta name="twitter:image" content="http://yoursite.com/Img/dataStructure01.jpg">
+<meta name="twitter:title" content="Palindrome Linked List">
+<meta name="twitter:description" content="ProblemGiven a singly linked list, determine if it is a palindrome.
+ThoughtsThis can be solved by reversing the 2nd half and compare the two halves. Let’s start with an example [1, 1, 2, 1].
+In the be">
 
 
 
@@ -122,10 +120,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/10/31/data-structure-Array01/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/13/Solution234/"/>
 
 
-  <title> 二维数组中的查找 | Walnut code </title>
+  <title> Palindrome Linked List | Walnut code </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -257,7 +255,7 @@
             
             
               
-                二维数组中的查找
+                Palindrome Linked List
               
             
           </h1>
@@ -269,8 +267,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-31T11:20:48+08:00" content="2016-10-31">
-              2016-10-31
+            <time itemprop="dateCreated" datetime="2016-12-13T19:13:54+08:00" content="2016-12-13">
+              2016-12-13
             </time>
           </span>
 
@@ -283,8 +281,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/数据结构——数组/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构——数组</span>
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
 
@@ -299,8 +297,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/31/data-structure-Array01/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/31/data-structure-Array01/" itemprop="commentsCount"></span>
+                <a href="/2016/12/13/Solution234/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/13/Solution234/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -323,29 +321,49 @@
       
 
       
-        <h4 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h4><p>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数，</p>
-<h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><p>如果从中间随意取一个数值比较，那么向右、向下会有重叠的部分，导致下述寻找无法继续下去。</p>
-<p>为了解决这个问题需要考虑选择右上角的数为标准进行比较，因为该位置上的数在该行最大，在该列是最小的，故进行一次比较后，可以减少一列或者一行的查找范围，做到了代码优化的目的。<br><img src="/Img/dataStructure01.jpg" width="300" height="300" ;=""></p>
-<h4 id="Java代码如下："><a href="#Java代码如下：" class="headerlink" title="Java代码如下："></a>Java代码如下：</h4><pre><code>public static boolean Search(int[][] arr, int rows, int columns, int number){
-    boolean found=false;
-    if(arr!=null&amp;&amp;rows&gt;0&amp;&amp;columns&gt;0)
-    {
-        int row=0;
-        int col=columns-1;
-        while(row&lt;rows&amp;&amp;col&gt;=0)
-        {
-            if(arr[row][col]==number)
-            {
-                found=true;
-                break;
-            }else if(arr[row][col]&gt;number){
-                --col;
-            }else{
-                ++row;
-            }
+        <h4 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h4><p>Given a singly linked list, determine if it is a palindrome.</p>
+<h4 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h4><p>This can be solved by reversing the 2nd half and compare the two halves. Let’s start with an example [1, 1, 2, 1].</p>
+<p>In the beginning, set two pointers fast and slow starting at the head.<br>1 -&gt; 1 -&gt; 2 -&gt; 1 -&gt; null<br>sf<br>(1) Move: fast pointer goes to the end, and slow goes to the middle.<br>1 -&gt; 1 -&gt; 2 -&gt; 1 -&gt; null<br>　　　　s　　　　f<br>(2) Reverse: the right half is reversed, and slow pointer becomes the 2nd head.<br>1 -&gt; 1    null &lt;- 2 &lt;- 1<br>h　　　　　　　s<br>(3) Compare: run the two pointers head and slow together and compare.<br>1 -&gt; 1    null &lt;- 2 &lt;- 1<br>　　h　　　s</p>
+<h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><pre><code>/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public boolean isPalindrome(ListNode head) {
+        ListNode fast=head;
+        ListNode slow=head;
+        while(fast!=null&amp;&amp;fast.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
         }
+        if(fast!=null){
+            slow=slow.next;
+        }
+        slow=reverse(slow);
+        fast=head;
+        while(slow!=null){
+            if(slow.val!=fast.val){
+                return false;
+            }
+            slow=slow.next;
+            fast=fast.next;
+        }
+        return true;
     }
-    return found;
+    public static ListNode reverse(ListNode head){
+        ListNode pre=null;
+        while(head!=null){
+            ListNode temp=head.next;
+            head.next=pre;
+            pre=head;
+            head=temp;
+        }
+        return pre;
+    }
 }
 </code></pre>
       
@@ -372,17 +390,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/27/LeetCodeSolution08/" rel="next" title="String to Integer">
-                <i class="fa fa-chevron-left"></i> String to Integer
+              <a href="/2016/12/13/database01/" rel="next" title="SQL常用语句积累（转）">
+                <i class="fa fa-chevron-left"></i> SQL常用语句积累（转）
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/01/regular-expressions-for-java/" rel="prev" title="Java正则表达式————入门(转)">
-                Java正则表达式————入门(转) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -408,8 +422,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/31/data-structure-Array01/"
-           data-title="二维数组中的查找" data-url="http://yoursite.com/2016/10/31/data-structure-Array01/">
+      <div class="ds-thread" data-thread-key="2016/12/13/Solution234/"
+           data-title="Palindrome Linked List" data-url="http://yoursite.com/2016/12/13/Solution234/">
       </div>
     
   </div>
@@ -504,7 +518,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目："><span class="nav-number">1.</span> <span class="nav-text">题目：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路："><span class="nav-number">2.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java代码如下："><span class="nav-number">3.</span> <span class="nav-text">Java代码如下：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Thoughts"><span class="nav-number">2.</span> <span class="nav-text">Thoughts</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
             
           </div>
         </section>
