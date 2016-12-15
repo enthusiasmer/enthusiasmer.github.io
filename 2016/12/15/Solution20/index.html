@@ -84,21 +84,19 @@
 
 
 
-<meta name="description" content="ProblemGiven a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.
-According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined be">
+<meta name="description" content="ProblemGiven a string containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[‘ and ‘]’, determine if the input string is valid.
+The brackets must close in the correct order, “()” and “()[]{}” are all va">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lowest common ancestor（最近公共祖先）">
-<meta property="og:url" content="http://yoursite.com/2016/11/17/Solution235/index.html">
+<meta property="og:title" content="Valid Parentheses">
+<meta property="og:url" content="http://yoursite.com/2016/12/15/Solution20/index.html">
 <meta property="og:site_name" content="Walnut code">
-<meta property="og:description" content="ProblemGiven a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.
-According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined be">
-<meta property="og:image" content="http://yoursite.com/Img/Solution235.png">
-<meta property="og:updated_time" content="2016-11-17T08:17:51.999Z">
+<meta property="og:description" content="ProblemGiven a string containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[‘ and ‘]’, determine if the input string is valid.
+The brackets must close in the correct order, “()” and “()[]{}” are all va">
+<meta property="og:updated_time" content="2016-12-15T13:03:31.558Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lowest common ancestor（最近公共祖先）">
-<meta name="twitter:description" content="ProblemGiven a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.
-According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined be">
-<meta name="twitter:image" content="http://yoursite.com/Img/Solution235.png">
+<meta name="twitter:title" content="Valid Parentheses">
+<meta name="twitter:description" content="ProblemGiven a string containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[‘ and ‘]’, determine if the input string is valid.
+The brackets must close in the correct order, “()” and “()[]{}” are all va">
 
 
 
@@ -119,10 +117,10 @@ According to the definition of LCA on Wikipedia: “The lowest common ancestor i
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/17/Solution235/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/15/Solution20/"/>
 
 
-  <title> Lowest common ancestor（最近公共祖先） | Walnut code </title>
+  <title> Valid Parentheses | Walnut code </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -254,7 +252,7 @@ According to the definition of LCA on Wikipedia: “The lowest common ancestor i
             
             
               
-                Lowest common ancestor（最近公共祖先）
+                Valid Parentheses
               
             
           </h1>
@@ -266,8 +264,8 @@ According to the definition of LCA on Wikipedia: “The lowest common ancestor i
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-17T16:08:24+08:00" content="2016-11-17">
-              2016-11-17
+            <time itemprop="dateCreated" datetime="2016-12-15T20:36:44+08:00" content="2016-12-15">
+              2016-12-15
             </time>
           </span>
 
@@ -296,8 +294,8 @@ According to the definition of LCA on Wikipedia: “The lowest common ancestor i
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/17/Solution235/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/17/Solution235/" itemprop="commentsCount"></span>
+                <a href="/2016/12/15/Solution20/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/15/Solution20/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -320,39 +318,27 @@ According to the definition of LCA on Wikipedia: “The lowest common ancestor i
       
 
       
-        <h4 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h4><p>Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.</p>
-<p>According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes v and w as the lowest node in T that has both v and w as descendants (where we allow a node to be a descendant of itself).<br><img src="/Img/Solution235.png" width="500" height="500" ;=""><br>For example, the lowest common ancestor (LCA) of nodes 2 and 8 is 6. Another example is LCA of nodes 2 and 4 is 2, since a node can be a descendant of itself according to the LCA definition.</p>
-<h4 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h4><p>对于二叉搜索树：二叉查找树（Binary Search Tree），（又：二叉搜索树，二叉排序树）它或者是一棵空树，或者是具有下列性质的二叉树： 若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值； 若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值； 它的左、右子树也分别为二叉排序树。</p>
-<p>主要分别三种：<br>1.如果子节点p和q分别位于root的左右两边，则root为Lowest common ancestor；<br>2.如果子节点p和q都位于root的左边，将root.left作为此时的根节点root，进行递归；<br>3.如果子节点p和q都位于root的右边，将root.left作为此时的根节点root，进行递归。</p>
-<p>如果是二叉搜索数可以直接判断，子节点p和q在左子树或右子树；如果是普通的二叉树，则可以用如下函数来判断。</p>
-<pre><code>public static boolean isChildNode(TreeNode root,TreeNode child){
-        if(root==null) return false;
-        if(root==child) return true;
-        return isChildNode(root.left,child)||isChildNode(root.right,child);
-    }
-</code></pre><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><pre><code>/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
-public class Solution {
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if(isChildNode(root.left,p)&amp;&amp;isChildNode(root.left,q)){
-            return lowestCommonAncestor(root.left,p,q);
-        }
-        if(isChildNode(root.right,p)&amp;&amp;isChildNode(root.right,q)){
-            return lowestCommonAncestor(root.right,p,q);
-        }
-        return root;
-    }
-    public static boolean isChildNode(TreeNode root,TreeNode child){
-        if(root==null) return false;
-        if(root==child) return true;
-        return isChildNode(root.left,child)||isChildNode(root.right,child);
+        <h4 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h4><p>Given a string containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[‘ and ‘]’, determine if the input string is valid.</p>
+<p>The brackets must close in the correct order, “()” and “()[]{}” are all valid but “(]” and “([)]” are not.<br>好啦，题目意思很好理解，LeetCode里面的题目有些真的很难理解啊！<br>本题目就是说，三种括号配对的问题，每个左括号必须有对应的右括号，满足条件就返回true，否则就返回false咯！</p>
+<h4 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h4><p>其实做这个题目想了半天，各种情况都想过，但是找不到完美的解决办法，最后看了下提示，用堆栈做这个题就很容易了，<br>先把左括号全部压栈，然后遇到对应的右括号判断栈顶元素是否为对应的左括号，如果不是直接返回false，如果是就压出栈顶元素，继续前面的步骤，<br>直到把字符串的所有字符遍历，如果前面都匹配上了，即前面没有返回false，最后判断栈是否为空，如果为空，返回true，如果不为空，返回false。</p>
+<h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><pre><code>public class Solution {
+    public boolean isValid(String s) {
+       //用堆栈解决此问题
+        Stack&lt;Character&gt; ss=new Stack&lt;Character&gt;();
+        for(int i=0;i&lt;s.length();i++){
+            if(s.charAt(i)==&apos;(&apos;||s.charAt(i)==&apos;{&apos;||s.charAt(i)==&apos;[&apos;){
+                ss.push(s.charAt(i));
+            }else if(s.charAt(i)==&apos;)&apos;&amp;&amp;!ss.isEmpty()&amp;&amp;ss.peek()==&apos;(&apos;){
+                ss.pop();
+            }else if(s.charAt(i)==&apos;}&apos;&amp;&amp;!ss.isEmpty()&amp;&amp;ss.peek()==&apos;{&apos;){
+                ss.pop();
+            }else if(s.charAt(i)==&apos;]&apos;&amp;&amp;!ss.isEmpty()&amp;&amp;ss.peek()==&apos;[&apos;){
+                ss.pop();
+            }else{
+                    return false;
+                }
+            }
+        return ss.isEmpty();
     }
 }
 </code></pre>
@@ -380,17 +366,13 @@ public class Solution {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/16/Solution437/" rel="next" title="Path Sum">
-                <i class="fa fa-chevron-left"></i> Path Sum
+              <a href="/2016/12/13/Solution234/" rel="next" title="Palindrome Linked List">
+                <i class="fa fa-chevron-left"></i> Palindrome Linked List
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/23/Solution66/" rel="prev" title="Plus One">
-                Plus One <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -416,8 +398,8 @@ public class Solution {
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/17/Solution235/"
-           data-title="Lowest common ancestor（最近公共祖先）" data-url="http://yoursite.com/2016/11/17/Solution235/">
+      <div class="ds-thread" data-thread-key="2016/12/15/Solution20/"
+           data-title="Valid Parentheses" data-url="http://yoursite.com/2016/12/15/Solution20/">
       </div>
     
   </div>
