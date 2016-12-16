@@ -251,6 +251,201 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/16/Solution160/" itemprop="url">
+                  Intersection of Two Linked Lists
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-16T15:34:16+08:00" content="2016-12-16">
+              2016-12-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/16/Solution160/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/16/Solution160/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h4><p>Write a program to find the node at which the intersection of two singly linked lists begins.<br>For example, the following two linked lists:<br><img src="/Img/Solution160.png" width="500" height="500" ;=""><br>begin to intersect at node c1.</p>
+<p>Notes:<br>1.If the two linked lists have no intersection at all, return null.<br>2.The linked lists must retain their original structure after the function returns.<br>3.You may assume there are no cycles anywhere in the entire linked structure.<br>4.Your code should preferably run in O(n) time and use only O(1) memory.</p>
+<h4 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h4><p>遇到这个题目，大家可能都会想到：在第一链表上顺序遍历每个结点，每遍历到一个结点的时候，在第二个链表上的结点顺序遍历每个结点。很显然这种方法的时间复杂度很高，如果第一个链表的长度为m,第二个链表的长度为n，那么该方法的时间复杂度为O(mn)。</p>
+<p>为了对时间复杂度进行优化，有如下3种方法：</p>
+<p>方法一：<br>由于两个链表的长度有可能不一样，所以从链表表头开始，不一定会同时遍历到公共结点。但是从链<br>表尾部开始，肯定会同时到达第一个公共结点，考虑到这种后进先出的特性，我们使用两个堆栈来分<br>别存放两个链表中的每个结点，同时从栈中压出栈顶元素，同时用一个ListNode保存前一个栈里弹出<br>的结点，直到压出的元素不等，此时保存下来的就是我们要找的第一个公共结点。此方法的时间复杂<br>度为O(m+n),但是会使用到两个堆栈，空间复杂度也为O(m+n)。</p>
+<p>方法二：<br>其实堆栈的作用就是为了同时遍历到达第一个公共结点，为了节省空间，我们可以用如下方法来达到<br>同样的目的：我们首先遍历两个链表得到链表的长度分别为lenA和lenB，将将较长的链表走先走两者<br>长度之差，然后同时遍历，这样就可以保证同时达到第一个公共结点的目的。</p>
+<p>方法三：<br>其实第三种方法是最精妙的，不得不服啊，网友的力量果然强大，我在逛LeetCode讨论区的时候不经<br>意发现了这个强大的方法。该方法不需要获得两个链表的长度，需要定义两个指针listA和listB，如<br>果两个链表长度相等，直接遍历第一遍就可以找出第一个公共结点，如果长度不等，当两个指针遍历<br>到最后一个结点时，将指针只想另外一个头部，这样经过两轮遍历，两个指针到达第一个公共结点的<br>距离相同，即在第二轮中一定会同时到达第一公共结点。（Ps：这个方法太巧妙了！！！）</p>
+<h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><pre><code>/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+//方法一：
+    public static ListNode getIntersectionNode1(ListNode headA, ListNode headB){
+         ListNode temp=null;
+         if(headA==null||headB==null) return temp;
+         Stack&lt;ListNode&gt; sA=new Stack&lt;&gt;();
+         Stack&lt;ListNode&gt; sB=new Stack&lt;&gt;();
+
+         while(headA!=null){
+                sA.push(headA);
+                headA=headA.next;
+            }
+         while(headB!=null){
+                sB.push(headB);
+                headB=headB.next;
+            }
+         while(!sA.isEmpty()&amp;&amp;!sB.isEmpty()&amp;&amp;sA.peek()==sB.peek()){
+                temp=sA.pop();
+                sB.pop();
+            }
+         return temp;
+    }
+    //方法二：
+    public static ListNode getIntersectionNode2(ListNode headA, ListNode headB){
+        int lenA=getLength(headA);
+        int lenB=getLength(headB);
+        while(lenA&gt;lenB){
+            headA=headA.next;
+            lenA--;
+        }
+        while(lenA&lt;lenB){
+            headB=headB.next;
+            lenB--;
+        }
+        while(headA!=headB){
+            headA=headA.next;
+            headB=headB.next;
+        }
+        return headA;
+    }
+    public static int getLength(ListNode head){
+        int len=0;
+        while(head!=null){
+            len++;
+            head=head.next;
+        }
+        return len;
+    }
+    //方法三：
+    public static ListNode getIntersectionNode3(ListNode headA, ListNode headB){
+        if(headA==null||headB==null) return null;
+        ListNode listA=headA;
+        ListNode listB=headB;
+        while(listA!=listB){
+            listA=listA==null?headB:listA.next;
+            listB=listB==null?headA:listB.next;
+        }
+        return listA;
+    }
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/15/Solution20/" itemprop="url">
                   Valid Parentheses
                 </a>
@@ -1625,129 +1820,6 @@ public class ListNode {
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/06/github-display-problem/" itemprop="url">
-                  博客首页、归档等文字显示不出来问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-06T15:04:13+08:00" content="2016-11-06">
-              2016-11-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/06/github-display-problem/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/06/github-display-problem/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>前几天碰到了github博客网页显示不全的问题，但是在本地可以正常显示。</p>
-<p>当打开博客是，显示不出首页、归档等文字，但是鼠标可以点击这些看不见的链接，同时也可以跳转；<br>然后呢，试了好多方法都解决不了，最后在网上找到了其他大神的解决办法，亲测有效！！！</p>
-<p>方法如下：<br>可以手动将 source/vendors 目录修改成 source/lib （或者其他的名称，只是 lib 我测试了可以使用）；<br>同时，修改下主题配置文件_config.yml， 将 _internal: vendors 改成你所修改的名字，例如 _internal: lib”</p>
-<p>再次感谢大神们的解决方案！！！</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1793,7 +1865,7 @@ public class ListNode {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
