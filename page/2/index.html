@@ -251,6 +251,187 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/16/Solution437/" itemprop="url">
+                  Path Sum
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-16T20:57:04+08:00" content="2016-11-16">
+              2016-11-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/16/Solution437/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/16/Solution437/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h4><p>You are given a binary tree in which each node contains an integer value.</p>
+<p>Find the number of paths that sum to a given value.</p>
+<p>The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from parent nodes to child nodes).</p>
+<p>The tree has no more than 1,000 nodes and the values are in the range -1,000,000 to 1,000,000.</p>
+<p>Example:</p>
+<p>root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8<br><img src="/Img/Solution437.png" width="500" height="500" ;=""></p>
+<p>Return 3. The paths that sum to 8 are:</p>
+<ol>
+<li>5 -&gt; 3</li>
+<li>5 -&gt; 2 -&gt; 1</li>
+<li>-3 -&gt; 11</li>
+</ol>
+<h4 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h4><p>So the idea is similar as Two sum, using HashMap to store ( key : the prefix sum, value : how many ways get to this prefix sum) , and whenever reach a node, we check if prefix sum - target exists in hashmap or not, if it does, we added up the ways of prefix sum - target into res.<br>For instance : in one path we have 1,2,-1,-1,2, then the prefix sum will be: 1, 3, 2, 1, 3, let’s say we want to find target sum is 2, then we will have {2},{ 2, -1, -1, 2} ways.</p>
+<p>I used global variable count, but obviously we can avoid global variable by passing the count from bottom up. The time complexity is O(n). This is my first post in discuss, open to any improvement or criticism. :)</p>
+<h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><pre><code>package Algorithms;
+import java.util.HashMap;
+import java.util.Map;
+public class Solution437 {
+    public static int pathSum(TreeNode root, int sum){
+        HashMap&lt;Integer,Integer&gt; map=new HashMap&lt;Integer,Integer&gt;();
+        map.put(0, 1);
+        helper(root,0,sum,map);
+        return count;
+    }
+    static int count=0;
+    public static void helper(TreeNode root,int sum,int target,HashMap&lt;Integer,Integer&gt; map){
+        if(root==null) return;
+        sum+=root.val;
+
+        if(map.containsKey(sum-target)){
+            count+=map.get(sum-target);
+        }
+        if(!map.containsKey(sum)){
+            map.put(sum, 1);
+        }else{
+            map.put(sum, map.get(sum)+1);
+        }
+        helper(root.left,sum,target,map);
+        helper(root.right,sum,target,map);
+        map.put(sum, map.get(sum)-1);
+    }
+    public static void main(String[] args) {
+        TreeNode t1=new TreeNode(10);
+        TreeNode t2=new TreeNode(5);
+        TreeNode t3=new TreeNode(-3);
+        TreeNode t4=new TreeNode(3);
+        TreeNode t5=new TreeNode(2);
+        TreeNode t6=new TreeNode(11);
+        TreeNode t7=new TreeNode(3);
+        TreeNode t8=new TreeNode(-2);
+        TreeNode t9=new TreeNode(1);
+        t1.left=t2;
+        t1.right=t3;
+        t2.left=t4;
+        t2.right=t5;
+        t3.right=t6;
+        t4.left=t7;
+        t4.right=t8;
+        t5.right=t9;
+        System.out.println(pathSum(t1,8));
+    }
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/11/linkedList02/" itemprop="url">
                   单链表的反转
                 </a>
@@ -1726,129 +1907,6 @@ public class Solution8 {
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/25/my-new-post/" itemprop="url">
-                  Java And C++
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-25T20:48:12+08:00" content="2016-10-25">
-              2016-10-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/10/25/my-new-post/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/25/my-new-post/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>虽然Title是Java And C++，但是本文可能会偏向Java。因为小时候对手机上出现的一个coffee杯，然后上面出现热气的印象很深刻，当时就感觉很酷的样子，后来才知道那就Java的标志，所以博主可能行文中间会偏向Java。</p>
-<h3 id="先来安利一下Java的advantage"><a href="#先来安利一下Java的advantage" class="headerlink" title="先来安利一下Java的advantage"></a>先来安利一下Java的advantage</h3><p>1.Java为纯面向对象语言，它能够反映一切生活中的对象，编写程序更为容易；<br>2.平台无关性，”一次编译，到处运行”，程序源代码编译成字节码，然后在java虚拟机上执行；<br>3.Java提供了很多内置的类库，简化开发人员的程序设计工作，比如Java语言提供了对多线程的支持，提供了对网络通信的支持，以及垃圾回收器（Garbage Collection）；<br>4.java提供了对web应用开发的支持，applet、servlet和jsp用来开发web应用程序，socket，RMI用来开发分布式应用程序；<br>5.java具有较好的安全性和健壮性，防止恶意代码攻击的安全机制（数组边界检测和Bytecode校验等）；<br>6.去除了C++语言中难以理解、容易混淆的特性，比如头文件、指针、结构、单元、运算符重载、虚拟基础类、异常处理机制、多重继承等；</p>
-<h3 id="Comparison-between-Java-and-C"><a href="#Comparison-between-Java-and-C" class="headerlink" title="Comparison between Java and C++:"></a>Comparison between Java and C++:</h3><p>1.Java为纯面向对象语言，所有代码（报错变量、函数等）必须在类中实现，除基本数据类型（包括int、float等）外，所有类型都是类。此外，Java语言中不存在全局变量或者全局函数，而C++兼具面向过程和面向过程编程的特点，可以定义全局变量和全局函数；<br>2.与C++相比，Java没有指针的概念，这有效防止了C/C++语言中操作指针可能引起的系统问题，从而使程序变得更加安全；<br>3.与C++相比，Java语言不支持多重继承，但是Java引入了接口的概念，可以同时实现多个接口。由于接口也具有多态性，因此java语言中可以通过实现多个接口来实现与C++语言中多重继承类似的目的；<br>4.在C++语言中，需要开发人员去管理内存的分配（包括申请与释放），而Java语言提供了垃圾回收器来实现垃圾的自动回收，不需要程序显式地管理内存的分配。在C++语言中，通常会把释放资源的代码放到析构函数中，Java语言中虽然没有析构函数，但却引入了一个finalize()方法，当垃圾回收器将要释放无用对象的内存时，会首先调用该对象的finalize()方法，因此，开发人员不需要关心也不需要知道对象所占的内存空间何时会被释放；<br>5.C++语言支持运算符重载，而Java语言不支持运算符重载。C++语言支持预处理，Java语言没有预处理器，但它提供的import机制与C++中的预处理机制类似；<br>6.Java具有平台无关性，Java提供对注释文档的内建支持。</p>
-<p>其实呢，博主觉得Java最大的优势就是跨平台，也就是所谓的“一次编译，到处运行”。<br>ps：一定记得要加空格！一定记得要加空格！一定记得要加空格！（重要的事情说三遍）</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1894,7 +1952,7 @@ public class Solution8 {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

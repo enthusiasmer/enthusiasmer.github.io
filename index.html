@@ -251,6 +251,240 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/20/Solution225/" itemprop="url">
+                  Implement Stack using Queues
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-20T18:38:50+08:00" content="2016-12-20">
+              2016-12-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/20/Solution225/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/20/Solution225/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h4><p>Implement the following operations of a stack using queues.</p>
+<p>push(x) – Push element x onto stack.<br>pop() – Removes the element on top of the stack.<br>top() – Get the top element.<br>empty() – Return whether the stack is empty.</p>
+<p>Notes:<br>You must use only standard operations of a queue – which means only push to back, peek/pop from front, size, and is empty operations are valid.<br>Depending on your language, queue may not be supported natively. You may simulate a queue by using a list or deque (double-ended queue), as long as you use only standard operations of a queue.<br>You may assume that all operations are valid (for example, no pop or top operations will be called on an empty stack).</p>
+<h4 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h4><p>这次是用队列实现堆栈，记得上次有个题目是用堆栈实现队列，当时的思路就是用两个栈来实现队列，<br>因此遇到这个题目的第一想法就是用两个队列实现一个堆栈的先进后出的特性，主要有如下两种思路：<br>1.push()效率很低。<br>push()：将元素add进入一个空队列中，然后将另外一个队列中的元素poll出来，然后依次add进入第一个队列中；<br>pop():由于在push的时候已经已经变换了顺序，所以直接poll非空队列首端的那个元素；<br>top():由于在push的时候已经已经变换了顺序，所以直接peek非空队列首端的那个元素；<br>empty():当两个队列同时为空时，堆栈才为空。</p>
+<p>2.pop()和top()效率低。<br>push():直接将元素add进入一个非空队列；<br>pop():如果非空队列有n个元素，把前n-1个元素poll出来，然后依次add进入另外一个空队列，把剩下的一个元素pop出来；<br>top():和pop()一样，除了返回最后一个元素的值，还需要把最后一个元素也add进入新队列；<br>empty():当两个队列同时为空时，堆栈才为空。</p>
+<p>Ps：其实上面两种方法大同小异，第一种是在push时调整顺序，接下来的操作就很方便；第二种方法是在pop和top时调整顺序，只是调整顺序的时机不同而已。</p>
+<p>其实用一个队列也可以实现栈先进后出的特性，我个人来讲比较偏爱下面这种方法，比较好记，只要实现对了push函数，后面三个直接调用队列的函数即可。<br>3.方便简单<br>push()：将元素add进入队列后，然后将之前的元素全部poll出来同时一次add进入次队列；<br>pop():由于在push的时候已经已经变换了顺序，所以直接poll队列首端的那个元素；<br>top():由于在push的时候已经已经变换了顺序，所以直接peek队列首端的那个元素；<br>empty():当两个队列同时为空时，堆栈才为空。</p>
+<h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><pre><code>//方法一
+class MyStack {
+//using two queue. The push is inefficient.
+private Queue&lt;Integer&gt; q1 = new LinkedList&lt;Integer&gt;();
+private Queue&lt;Integer&gt; q2 = new LinkedList&lt;Integer&gt;();
+public void push(int x) {
+    if(q1.isEmpty()) {
+        q1.add(x);
+        for(int i = 0; i &lt; q2.size(); i ++)
+            q1.add(q2.poll());
+    }else {
+        q2.add(x);
+        for(int i = 0; i &lt; q1.size(); i++)
+            q2.add(q1.poll());
+    }
+}
+
+public void pop() {
+    if(!q1.isEmpty()) 
+        q1.poll();
+    else
+        q2.poll();
+}
+public int top() {
+    return q1.isEmpty() ? q2.peek() : q1.peek();
+}
+public boolean empty() {
+    return q1.isEmpty() &amp;&amp; q2.isEmpty();
+}
+}
+//方法二
+class MyStack{
+//using two queue. The pop and top are inefficient.
+private Queue&lt;Integer&gt; q1 = new LinkedList&lt;Integer&gt;();
+private Queue&lt;Integer&gt; q2 = new LinkedList&lt;Integer&gt;();
+public void push(int x) {
+    if(!q1.isEmpty()) 
+        q1.add(x);
+    else
+        q2.add(x);
+}
+public void pop() {
+    if(q1.isEmpty()) {
+        int size = q2.size();
+        for(int i = 1; i &lt; size; i ++) {
+            q1.add(q2.poll());
+        }
+        q2.poll();
+    }else {
+        int size = q1.size();
+        for(int i = 1; i &lt; size; i ++) {
+            q2.add(q1.poll());
+        }
+        q1.poll();
+    }
+}
+public int top() {
+    int res;
+    if(q1.isEmpty()) {
+        int size = q2.size();
+        for(int i = 1; i &lt; size; i ++) {
+            q1.add(q2.poll());
+        }
+        res = q2.poll();
+        q1.add(res);
+    }else {
+        int size = q1.size();
+        for(int i = 1; i &lt; size; i ++) {
+            q2.add(q1.poll());
+        }
+        res = q1.poll();
+        q2.add(res);
+    }
+    return res;
+}
+public boolean empty() {
+    return q1.isEmpty() &amp;&amp; q2.isEmpty();
+}
+}
+//方法三：
+class MyStack {
+
+//one Queue solution
+private Queue&lt;Integer&gt; q = new LinkedList&lt;Integer&gt;();
+
+// Push element x onto stack.
+public void push(int x) {
+    q.add(x);
+    for(int i = 1; i &lt; q.size(); i ++) { //rotate the queue to make the tail be the head
+        q.add(q.poll());
+    }
+}
+
+// Removes the element on top of the stack.
+public void pop() {
+    q.poll();
+}
+
+// Get the top element.
+public int top() {
+    return q.peek();        
+}
+
+// Return whether the stack is empty.
+public boolean empty() {
+    return q.isEmpty();
+}
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/20/ISO-OSI/" itemprop="url">
                   ISO/OSI参考模型（转）
                 </a>
@@ -1570,187 +1804,6 @@ public class Solution {
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/16/Solution437/" itemprop="url">
-                  Path Sum
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-16T20:57:04+08:00" content="2016-11-16">
-              2016-11-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/16/Solution437/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/16/Solution437/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h4><p>You are given a binary tree in which each node contains an integer value.</p>
-<p>Find the number of paths that sum to a given value.</p>
-<p>The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from parent nodes to child nodes).</p>
-<p>The tree has no more than 1,000 nodes and the values are in the range -1,000,000 to 1,000,000.</p>
-<p>Example:</p>
-<p>root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8<br><img src="/Img/Solution437.png" width="500" height="500" ;=""></p>
-<p>Return 3. The paths that sum to 8 are:</p>
-<ol>
-<li>5 -&gt; 3</li>
-<li>5 -&gt; 2 -&gt; 1</li>
-<li>-3 -&gt; 11</li>
-</ol>
-<h4 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h4><p>So the idea is similar as Two sum, using HashMap to store ( key : the prefix sum, value : how many ways get to this prefix sum) , and whenever reach a node, we check if prefix sum - target exists in hashmap or not, if it does, we added up the ways of prefix sum - target into res.<br>For instance : in one path we have 1,2,-1,-1,2, then the prefix sum will be: 1, 3, 2, 1, 3, let’s say we want to find target sum is 2, then we will have {2},{ 2, -1, -1, 2} ways.</p>
-<p>I used global variable count, but obviously we can avoid global variable by passing the count from bottom up. The time complexity is O(n). This is my first post in discuss, open to any improvement or criticism. :)</p>
-<h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><pre><code>package Algorithms;
-import java.util.HashMap;
-import java.util.Map;
-public class Solution437 {
-    public static int pathSum(TreeNode root, int sum){
-        HashMap&lt;Integer,Integer&gt; map=new HashMap&lt;Integer,Integer&gt;();
-        map.put(0, 1);
-        helper(root,0,sum,map);
-        return count;
-    }
-    static int count=0;
-    public static void helper(TreeNode root,int sum,int target,HashMap&lt;Integer,Integer&gt; map){
-        if(root==null) return;
-        sum+=root.val;
-
-        if(map.containsKey(sum-target)){
-            count+=map.get(sum-target);
-        }
-        if(!map.containsKey(sum)){
-            map.put(sum, 1);
-        }else{
-            map.put(sum, map.get(sum)+1);
-        }
-        helper(root.left,sum,target,map);
-        helper(root.right,sum,target,map);
-        map.put(sum, map.get(sum)-1);
-    }
-    public static void main(String[] args) {
-        TreeNode t1=new TreeNode(10);
-        TreeNode t2=new TreeNode(5);
-        TreeNode t3=new TreeNode(-3);
-        TreeNode t4=new TreeNode(3);
-        TreeNode t5=new TreeNode(2);
-        TreeNode t6=new TreeNode(11);
-        TreeNode t7=new TreeNode(3);
-        TreeNode t8=new TreeNode(-2);
-        TreeNode t9=new TreeNode(1);
-        t1.left=t2;
-        t1.right=t3;
-        t2.left=t4;
-        t2.right=t5;
-        t3.right=t6;
-        t4.left=t7;
-        t4.right=t8;
-        t5.right=t9;
-        System.out.println(pathSum(t1,8));
-    }
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1796,7 +1849,7 @@ public class Solution437 {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
